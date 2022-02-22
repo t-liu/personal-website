@@ -1,4 +1,4 @@
-/* Generated on: Fri Feb 18 2022 22:42:20 GMT+0000 (Coordinated Universal Time) */
+/* Generated on: Tue Feb 22 2022 16:41:20 GMT+0000 (Coordinated Universal Time) */
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
    ========================================================================== */
@@ -208,7 +208,7 @@
    .page.page--w-side-nav {
      position: relative;
      width: 85vw;
-     margin-bottom: 220px;
+     margin-bottom: 100px;
      line-height: 0px;
    }
    
@@ -219,7 +219,7 @@
      max-width: 1200px;
      margin-right: auto;
      margin-left: auto;
-     padding: 64px 40px;
+     padding: 48px 32px;
    }
    
    .section.section--full {
@@ -470,7 +470,7 @@
      display: -webkit-flex;
      display: -ms-flexbox;
      display: flex;
-     margin-bottom: 60px;
+     margin-bottom: 80px;
      -webkit-box-orient: vertical;
      -webkit-box-direction: normal;
      -webkit-flex-direction: column;
@@ -616,7 +616,7 @@
      min-height: 56px;
      margin-top: 4px;
      margin-bottom: 4px;
-     background-image: url("../images/icons/personal.png");
+     background-image: url("https://uploads-ssl.webflow.com/620e9742511d44f40112b7c5/620e989566993e80f671a0f2_personal.png");
      background-position: 0px 50%;
      background-size: contain;
      background-repeat: no-repeat;
@@ -627,7 +627,11 @@
    .nav__logo:hover {
      opacity: 0.6;
    }
-     
+   
+   .nav__logo.nav__logo--colored {
+     background-image: url("https://uploads-ssl.webflow.com/620e9742511d44f40112b7c5/620e9742511d44211612b7f4_Logo--white.png");
+   }
+   
    .nav__container {
      position: relative;
      display: -webkit-box;
@@ -940,8 +944,9 @@
      display: -webkit-flex;
      display: -ms-flexbox;
      display: flex;
-     padding-top: 48px;
-     padding-bottom: 48px;
+     margin-top: 0px;
+     padding-top: 20px;
+     padding-bottom: 20px;
      -webkit-box-orient: vertical;
      -webkit-box-direction: normal;
      -webkit-flex-direction: column;
@@ -951,15 +956,26 @@
      -webkit-justify-content: center;
      -ms-flex-pack: center;
      justify-content: center;
+     -webkit-flex-wrap: nowrap;
+     -ms-flex-wrap: nowrap;
+     flex-wrap: nowrap;
      -webkit-box-align: center;
      -webkit-align-items: center;
      -ms-flex-align: center;
      align-items: center;
+     -webkit-align-self: auto;
+     -ms-flex-item-align: auto;
+     align-self: auto;
+     -webkit-box-flex: 0;
+     -webkit-flex: 0 auto;
+     -ms-flex: 0 auto;
+     flex: 0 auto;
      background-color: #000;
+     line-height: 20px;
    }
    
    .section-title-container {
-     margin-top: 64px;
+     margin-top: 0px;
      background-color: #fc464e;
    }
    
@@ -989,8 +1005,8 @@
      font-weight: 700;
    }
    
-   .paragraph {
-     padding-right: 100px;
+   .form-paragraph {
+     padding-right: 500px;
      padding-left: 0px;
      font-family: Roboto, sans-serif;
      font-weight: 500;
@@ -1046,6 +1062,11 @@
        border-radius: 0px;
      }
    
+     .btn-primary.btn-primary--active--nav.btn-primary--active--white {
+       position: relative;
+       margin-top: 0px;
+     }
+   
      .intro {
        height: auto;
        margin-top: 10px;
@@ -1062,17 +1083,22 @@
        align-items: stretch;
      }
    
+     .intro.intro-about {
+       position: relative;
+     }
+   
      .page {
        position: relative;
      }
    
      .page.page--w-side-nav {
        width: 100%;
-       padding-bottom: 100px;
+       margin-bottom: 0px;
+       padding-bottom: 0px;
      }
    
      .section {
-       padding: 64px 32px;
+       padding: 48px 32px;
      }
    
      .footer__bottom-text {
@@ -1400,15 +1426,24 @@
      }
    
      .footer-2 {
+       position: absolute;
+       bottom: auto;
        margin-top: -4px;
+       padding-top: 20px;
+       padding-bottom: 20px;
+     }
+   
+     .section-title-container {
+       margin-top: 0px;
      }
    
      .heading {
        position: relative;
      }
    
-     .paragraph {
+     .form-paragraph {
        position: relative;
+       padding-right: 0px;
      }
    }
    
@@ -1435,13 +1470,18 @@
        margin-top: 10px;
      }
    
+     .intro.intro-about {
+       height: 60vh;
+       margin-top: 20px;
+     }
+   
      .customers__logo {
        margin-bottom: 16px;
      }
    
      .page.page--w-side-nav {
        margin-bottom: 0px;
-       padding-bottom: 100px;
+       padding-bottom: 0px;
      }
    
      .section {
@@ -1451,6 +1491,10 @@
      .section.section--full {
        padding-right: 16px;
        padding-left: 16px;
+     }
+   
+     .body-text--16 {
+       font-size: 14px;
      }
    
      .heading-h1 {
@@ -1475,7 +1519,7 @@
      }
    
      .grid-cell.grid-cell--50-square.grid-cell--text {
-       padding: 16px 0vw 32px;
+       padding: 16px 4vw 32px;
        background-color: transparent;
      }
    
@@ -1496,7 +1540,7 @@
    
      .page-content {
        margin-bottom: 0px;
-       padding-bottom: 100px;
+       padding-bottom: 0px;
      }
    
      .nav-sub-container-footer {
@@ -1547,8 +1591,22 @@
        margin-left: 24px;
      }
    
+     .footer-2 {
+       position: absolute;
+       left: 0%;
+       top: auto;
+       right: 0%;
+       bottom: auto;
+       padding-top: 20px;
+       padding-bottom: 20px;
+     }
+   
      .section-title-container {
-       margin-top: 24px;
+       margin-top: 0px;
+     }
+   
+     .form-paragraph {
+       padding-right: 0px;
      }
    }
    
@@ -1564,12 +1622,26 @@
        align-items: flex-start;
      }
    
+     .intro.intro-about {
+       height: 50vh;
+       margin-top: 20px;
+     }
+   
      .page.page--w-side-nav {
+       padding-bottom: 0px;
        -webkit-box-orient: vertical;
        -webkit-box-direction: normal;
        -webkit-flex-direction: column;
        -ms-flex-direction: column;
        flex-direction: column;
+     }
+   
+     .footer__bottom-text {
+       font-size: 10px;
+     }
+   
+     .body-text--16 {
+       font-size: 12px;
      }
    
      .grid-cell.grid-cell--25-25-50-100 {
@@ -1622,6 +1694,11 @@
      }
    
      .footer-2 {
-       padding-top: 68px;
+       padding-top: 20px;
+       padding-bottom: 20px;
+     }
+   
+     .form-paragraph {
+       padding-right: 0px;
      }
    }
