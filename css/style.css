@@ -1,4 +1,4 @@
-/* Generated on: Fri Feb 25 2022 02:48:36 GMT+0000 (Coordinated Universal Time) */
+/* Generated on: Fri Feb 25 2022 15:56:43 GMT+0000 (Coordinated Universal Time) */
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
    ========================================================================== */
@@ -272,7 +272,7 @@
      font-weight: 700;
    }
    
-   .company__social-links {
+   .company__social-links-footer {
      display: -webkit-box;
      display: -webkit-flex;
      display: -ms-flexbox;
@@ -294,7 +294,7 @@
      transition: opacity 200ms ease;
    }
    
-   .company__social-links:hover {
+   .company__social-links-footer:hover {
      opacity: 1;
    }
    
@@ -1141,6 +1141,25 @@
      background-color: #fc464e;
    }
    
+   .company__social-links {
+     display: -webkit-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: flex;
+     width: 24px;
+     height: 24px;
+     margin-right: 20px;
+     margin-left: 20px;
+     -webkit-box-pack: center;
+     -webkit-justify-content: center;
+     -ms-flex-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -webkit-align-items: center;
+     -ms-flex-align: center;
+     align-items: center;
+   }
+   
    @media screen and (max-width: 991px) {
      h1 {
        font-size: 4.6vh;
@@ -1211,8 +1230,11 @@
        line-height: 1.4em;
      }
    
-     .company__social-links {
-       display: none;
+     .company__social-links-footer {
+       display: -webkit-box;
+       display: -webkit-flex;
+       display: -ms-flexbox;
+       display: flex;
      }
    
      .grid-cell {
@@ -1628,6 +1650,10 @@
        -webkit-transform: translate(-100%, 0px);
        -ms-transform: translate(-100%, 0px);
        transform: translate(-100%, 0px);
+     }
+   
+     .company__social-links {
+       display: none;
      }
    }
    
