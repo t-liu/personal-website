@@ -1,4 +1,4 @@
-/* Generated on: Fri Feb 25 2022 15:56:43 GMT+0000 (Coordinated Universal Time) */
+/* Generated on: Thu Mar 03 2022 02:05:04 GMT+0000 (Coordinated Universal Time) */
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
    ========================================================================== */
@@ -184,6 +184,10 @@
    }
    
    .intro.intro-about {
+     left: auto;
+     top: auto;
+     right: auto;
+     bottom: auto;
      height: 60vh;
      margin-top: 100px;
    }
@@ -374,13 +378,14 @@
    }
    
    .grid-h {
+     position: relative;
      display: -webkit-box;
      display: -webkit-flex;
      display: -ms-flexbox;
      display: flex;
      margin-top: -40px;
      margin-bottom: 40px;
-     margin-left: -40px;
+     margin-left: 0px;
      -webkit-box-orient: horizontal;
      -webkit-box-direction: normal;
      -webkit-flex-direction: row;
@@ -470,7 +475,8 @@
      display: -webkit-flex;
      display: -ms-flexbox;
      display: flex;
-     margin-bottom: 80px;
+     margin-top: 220px;
+     margin-bottom: 60px;
      -webkit-box-orient: vertical;
      -webkit-box-direction: normal;
      -webkit-flex-direction: column;
@@ -1005,11 +1011,13 @@
    }
    
    .heading {
+     position: relative;
      font-family: Roboto, sans-serif;
      font-weight: 700;
    }
    
    .form-paragraph {
+     position: relative;
      padding-right: 500px;
      padding-left: 0px;
      font-family: Roboto, sans-serif;
@@ -1203,6 +1211,7 @@
    
      .intro.intro-about {
        position: relative;
+       margin-top: 0px;
      }
    
      .page {
@@ -1256,8 +1265,8 @@
      }
    
      .grid-h {
-       margin-top: -32px;
-       margin-bottom: 32px;
+       margin-top: 0px;
+       margin-bottom: 0px;
        margin-left: 0px;
      }
    
@@ -1267,7 +1276,8 @@
      }
    
      .page-content {
-       margin-bottom: 60px;
+       margin-top: 140px;
+       margin-bottom: 0px;
      }
    
      .line-2 {
@@ -1682,7 +1692,7 @@
    
      .intro.intro-about {
        height: 60vh;
-       margin-top: 20px;
+       margin-top: 0px;
      }
    
      .customers__logo {
@@ -1695,7 +1705,7 @@
      }
    
      .section {
-       padding: 40px 16px;
+       padding: 24px 16px;
      }
    
      .section.section--full {
@@ -1749,6 +1759,7 @@
      }
    
      .page-content {
+       margin-top: 100px;
        margin-bottom: 0px;
        padding-bottom: 0px;
      }
@@ -1756,6 +1767,7 @@
      .nav-sub-container-footer {
        position: static;
        padding-right: 16px;
+       padding-bottom: 20px;
        padding-left: 16px;
      }
    
@@ -1792,6 +1804,10 @@
    
      .nav.nav--fixed {
        position: relative;
+     }
+   
+     .category-container {
+       margin-top: 0px;
      }
    
      .project__container {
@@ -1851,7 +1867,7 @@
    
      .intro.intro-about {
        height: 50vh;
-       margin-top: 20px;
+       margin-top: 100px;
      }
    
      .page.page--w-side-nav {
@@ -1873,6 +1889,10 @@
    
      .grid-cell.grid-cell--25-25-50-100 {
        width: 100%;
+     }
+   
+     .page-content {
+       margin-top: 100px;
      }
    
      .nav__inner-container {
