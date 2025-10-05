@@ -20,21 +20,6 @@
         <div class="section">
           <div class="grid-h">
             <div class="grid-cell grid-cell--50-square">
-              <h2 class="heading-h5">Mulesoft - API</h2>
-              <div class="body-text--16">
-                Designed, developed, and deployed an API using Mulesoft Anypoint Platform to get the latest tweets and list of hashtags for a given keyword and n hours from Twitter's API. This project was part of a coding challenge for an interview process with an emerging life science company.<br /><br />
-                <a href="https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/" target="_blank">API Documentation</a><br />
-                <a href="https://github.com/t-liu/system-level-api-twitter" target="_blank">GitHub Repo</a>
-              </div>
-            </div>
-            <div class="grid-cell grid-cell--50-square">
-              <img src="/images/mulesoft.png" loading="lazy" alt="Mulesoft API Project" />
-            </div>
-          </div>
-        </div>
-        <div class="section">
-          <div class="grid-h">
-            <div class="grid-cell grid-cell--50-square">
               <h2 class="heading-h5">Cloud Resume Challenge</h2>
               <div class="body-text--16">
                 Build a static webpage from the ground up with a NoSQL database, API gateway, custom DNS, HTTP security, and serverless functions written in Python. Package the solution into a serverless application model (SAM) template utilizing Amazon's wide variety of cloud services.<br /><br /><br />‍
@@ -62,6 +47,21 @@
             </div>
             <div class="grid-cell grid-cell--50-square">
               <img src="/images/ccpsdemographics.png" loading="lazy" alt="CCPS Demographics Project" />
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="grid-h">
+            <div class="grid-cell grid-cell--50-square">
+              <h2 class="heading-h5">Mulesoft - API</h2>
+              <div class="body-text--16">
+                Designed, developed, and deployed an API using Mulesoft Anypoint Platform to get the latest tweets and list of hashtags for a given keyword and n hours from Twitter's API. This project was part of a coding challenge for an interview process with an emerging life science company.<br /><br />
+                <a href="https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/" target="_blank">API Documentation</a><br />
+                <a href="https://github.com/t-liu/system-level-api-twitter" target="_blank">GitHub Repo</a>
+              </div>
+            </div>
+            <div class="grid-cell grid-cell--50-square">
+              <img src="/images/mulesoft.png" loading="lazy" alt="Mulesoft API Project" />
             </div>
           </div>
         </div>
