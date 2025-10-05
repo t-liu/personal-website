@@ -2,7 +2,10 @@
   <div>
     <div class="intro">
       <div class="section">
-        <h2 class="heading-h1">Hello There!</h2>
+        <h2 class="heading-h1">
+          <img src="/images/icons/handwave.png" alt="Handwave Icon" class="icon">
+          Hello There!
+        </h2>
         <div class="body-text--16">
           My name is Thomas. I'm an <strong>aspiring software engineer</strong> that is constantly improving on current skill sets and learning new, cutting-edge technology. 
           My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in an enterprise environment. 
@@ -22,7 +25,7 @@
             <div class="grid-cell grid-cell--50-square">
               <h2 class="heading-h5">Cloud Resume Challenge</h2>
               <div class="body-text--16">
-                Build a static webpage from the ground up with a NoSQL database, API gateway, custom DNS, HTTP security, and serverless functions written in Python. Package the solution into a serverless application model (SAM) template utilizing Amazon's wide variety of cloud services.<br /><br /><br />‍
+                Build a custom static webpage from the ground up with a NoSQL database, API gateway, custom DNS, HTTP security, and serverless functions written in Python. Package the solution into a serverless application model (SAM) template utilizing Amazon's wide variety of cloud services.<br /><br /><br />‍
                 <a href="https://resume.thomasliu.click" target="_blank">Link to Public Resume</a><br />
                 <a href="https://github.com/t-liu/cloud-resume-challenge-backend" target="_blank">GitHub Repo - Backend</a><br />
                 <a href="https://github.com/t-liu/cloud-resume-challenge-frontend" target="_blank">GitHub Repo - Frontend</a>
@@ -36,10 +39,10 @@
         <div class="section">
           <div class="grid-h">
             <div class="grid-cell grid-cell--50-square">
-              <h2 class="heading-h5">CCPS Demographics</h2>
+              <h2 class="heading-h5">Vue.js Migration</h2>
               <div class="body-text--16">
-                Designed a webpage to display trending demographics data in a county public school system. Vue.js framework, d3.js for data visualization, leaflet for map. Hosted in AWS.<br /><br /><br />‍
-                <a href="https://ccpsdemographics.thomasliu.click" target="_blank">Live to Website</a><br />
+                Convert a static HTML webpage to a dynamic Vue.js webpage. Utilizing d3.js for data visualization, leaflet for map. Hosted in AWS.<br /><br /><br />‍
+                <a href="https://ccpsdemographics.thomasliu.click" target="_blank">Link to Website</a><br />
                 <a href="https://github.com/t-liu/ccpsdemographics-v2-nodejs" target="_blank">GitHub Repo - Backend</a><br />
                 <a href="https://github.com/t-liu/ccpsdemographics-v2-vue" target="_blank">GitHub Repo - Frontend</a><br/>
                 <a href="https://github.com/t-liu/ccpsdemographics-v2-data-pipeline" target="_blank">GitHub Repo - Data Pipeline</a><br />
