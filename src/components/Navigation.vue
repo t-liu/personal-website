@@ -15,7 +15,7 @@
     <div class="nav__container" :class="{ 'w--open': mobileMenuOpen }">
       <div class="nav__inner-container">
         <div class="nav__sub-container">
-          <router-link to="/" class="nav__item">Portfolio</router-link>
+          <a href="#" @click.prevent="scrollToPortfolio" class="nav__item">Portfolio</a>
           <router-link to="/about" class="nav__item">About</router-link>
           <a href="https://resume.thomasliu.click" class="nav__item" target="_blank">Résumé</a>
           <a href="https://www.linkedin.com/in/thomas-liu-tech" target="_blank" class="company__social-links w-inline-block">
@@ -47,6 +47,31 @@ export default {
   methods: {
     toggleMobileMenu() {
       this.mobileMenuOpen = !this.mobileMenuOpen
+    },
+    scrollToPortfolio() {
+      // Close mobile menu first
+      this.mobileMenuOpen = false
+      
+      // If we're not on the home page, navigate there first
+      if (this.$route.path !== '/') {
+        this.$router.push('/')
+        // Wait for navigation to complete, then scroll
+        this.$nextTick(() => {
+          this.performScroll()
+        })
+      } else {
+        // We're already on home page, just scroll
+        this.performScroll()
+      }
+    },
+    performScroll() {
+      const portfolioElement = document.getElementById('portfolio')
+      if (portfolioElement) {
+        portfolioElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
     }
   },
   watch: {

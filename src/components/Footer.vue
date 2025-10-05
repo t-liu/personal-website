@@ -1,7 +1,7 @@
 <template>
   <div id="footer-info" class="footer-2">
     <div class="footer__bottom-text">
-      Copyright &copy; {{ new Date().getFullYear() }} · Thomas Liu · All Rights Reserved<br /><br />
+      Copyright &copy; {{ new Date().getFullYear() }} · Thomas Liu · All Rights Reserved<br/>
       Made with <a href="https://vuejs.org/" target="_blank" class="link">Vue.js</a>. Hosted on AWS.
     </div>
   </div>
