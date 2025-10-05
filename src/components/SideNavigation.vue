@@ -9,7 +9,7 @@
       </router-link>
       <a href="https://resume.thomasliu.click" target="_blank" class="btn-primary btn-primary--side-nav w-button">        
         Résumé
-        <img src="/images/icons/new_tab.png" alt="New Tab Icon" class="icon">
+        <font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" class="icon" alt="New Tab Icon"/>
       </a>
     </div>
   </div>
