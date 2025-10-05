@@ -8,10 +8,10 @@
             <div class="body-text--16">
               <ul>
                 <li>Studied at University of Maryland, College Park (Go Terps!)</li>
-                <li>Over fifteen years in business technology</li>
-                <li>Federal Consulting, Life Sciences, Big Tech</li>
+                <li>Over fifteen years in business technology domain</li>
+                <li>Federal Consulting, REIT, Big Tech</li>
                 <li>Current position: Senior Software Engineer</li>
-                <li>Enjoy basketball, hanging out with family, fixing my house, and traveling</li>
+                <li>Enjoy basketball, hanging out with family, and traveling</li>
               </ul>
             </div>
           </div>
