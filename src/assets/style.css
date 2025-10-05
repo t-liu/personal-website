@@ -1665,6 +1665,25 @@
      .company__social-links {
        display: none;
      }
+     
+     /* Mobile navigation open state */
+     .nav__container.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
+     
+     .nav__transition-block.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
+     
+     .nav__transition-block-2.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
    }
    
    @media screen and (max-width: 767px) {
@@ -1851,6 +1870,25 @@
        background-color: #fc464e;
        font-size: 1em;
      }
+     
+     /* Mobile navigation open state for smaller screens */
+     .nav__container.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
+     
+     .nav__transition-block.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
+     
+     .nav__transition-block-2.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
    }
    
    @media screen and (max-width: 479px) {
@@ -1952,5 +1990,24 @@
      .nav__item-2 {
        margin-bottom: 6vw;
        font-size: 5vw;
+     }
+     
+     /* Mobile navigation open state for smallest screens */
+     .nav__container.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
+     
+     .nav__transition-block.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
+     }
+     
+     .nav__transition-block-2.w--open {
+       -webkit-transform: translate(0%, 0px);
+       -ms-transform: translate(0%, 0px);
+       transform: translate(0%, 0px);
      }
    }
