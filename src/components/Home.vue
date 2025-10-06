@@ -1,9 +1,17 @@
 <template>
   <div>
     <div class="intro">
-      <div class="section">
+      <div class="section wave-container">
         <h2 class="heading-h1">
-          <img src="/images/handwave.png" alt="Handwave Icon" class="icon">
+          <!-- check css for handwave animation -->
+          <img 
+            src="/images/handwave.png" 
+            alt="Handwave Icon" 
+            class="handwave-img" 
+            :class="{ 'wave-animation': isWaving }"
+            @mouseover="startWaving"
+            @mouseleave="stopWaving"
+          />
           Hello There!
         </h2>
         <div class="body-text--16">
@@ -81,8 +89,21 @@
 
 <script>
 export default {
-  name: 'Home'
-}
+  name: 'Home',
+  data() {
+    return {
+      isWaving: false,
+    };
+  },
+  methods: {
+    startWaving() {
+      this.isWaving = true;
+    },
+    stopWaving() {
+      this.isWaving = false;
+    },
+  },
+};
 </script>
 
 <style scoped>

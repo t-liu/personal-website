@@ -275,6 +275,38 @@
      line-height: 1.6em;
      font-weight: 700;
    }
+
+  /* hand wave animation */
+  .wave-container {
+    display: inline-block;
+  }
+  
+  .handwave-img {
+    height: auto;
+    transition: transform 0.1s ease; /* Smooth transition for animation */
+  }
+  
+  .wave-animation {
+    animation: wave-home 0.5s ease-in-out infinite; /* Animation on hover */
+  }
+  
+  @keyframes wave-home {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(10deg); /* Tilt right */
+    }
+    50% {
+      transform: rotate(0deg); /* Back to center */
+    }
+    75% {
+      transform: rotate(-10deg); /* Tilt left */
+    }
+    100% {
+      transform: rotate(0deg); /* Back to center */
+    }
+  }
    
    .company__social-links-footer {
      display: -webkit-box;
