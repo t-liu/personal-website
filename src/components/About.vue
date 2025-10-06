@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="intro intro-about">
       <div class="section">
         <div class="grid-h">
@@ -77,8 +76,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      </div>
 </template>
 
 <script>

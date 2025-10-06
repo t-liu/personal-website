@@ -1314,7 +1314,7 @@ img {
   }
 
   .page-content {
-    margin-top: 140px;
+    margin-top: 100px;
     margin-bottom: 0px;
   }
 
@@ -1748,8 +1748,9 @@ img {
   }
 
   .intro.intro-about {
-    height: 60vh;
+    height: auto;
     margin-top: 0px;
+    margin-bottom: 24px;
   }
 
   .customers__logo {
@@ -1769,7 +1770,6 @@ img {
     padding-right: 16px;
     padding-left: 16px;
   }
-
 
   .heading-h1 {
     margin-bottom: 16px;
@@ -1825,6 +1825,11 @@ img {
 
   .footer__social-icons .company__social-links {
     display: flex;
+  }
+
+  .body-text li {
+    font-size: 14px;
+    line-height: 1.6em;
   }
 
   .form--container {
@@ -1959,8 +1964,9 @@ img {
   }
 
   .intro.intro-about {
-    height: 50vh;
+    height: auto;
     margin-top: 100px;
+    margin-bottom: 24px;
   }
 
   .page.page--w-side-nav {
@@ -2053,6 +2059,12 @@ img {
   .footer__social-icons .company__social-links {
     display: flex;
   }
+
+  .body-text li {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
 
   .form-paragraph {
     padding-right: 0px;
