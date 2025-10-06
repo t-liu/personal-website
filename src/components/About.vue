@@ -5,7 +5,7 @@
         <div class="grid-h">
           <div class="grid-cell grid-cell--50-square grid-cell--text">
             <h2 class="heading-h5">About Me</h2>
-            <div class="body-text--16">
+            <div class="body-text">
               <ul>
                 <li>Studied at University of Maryland, College Park (Go Terps!)</li>
                 <li>Over fifteen years in business technology domain</li>
