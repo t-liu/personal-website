@@ -335,19 +335,15 @@
    }
    
    .company__social-icons {
-     -webkit-transition: all 200ms ease;
-     transition: all 200ms ease color;
-     font-size: 24px;
-     color: #000000;
-     vertical-align: middle;
-   }
-
-   .company__social-icons:hover {
     -webkit-transition: all 200ms ease;
     transition: all 200ms ease color;
     font-size: 24px;
     color: #000000;
     vertical-align: middle;
+  }
+
+  .company__social-icons:hover {
+    color: #0077B5;
   }
   /* hand wave animation */
   .wave-container {
