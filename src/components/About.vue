@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="grid-cell grid-cell--50-square grid-cell--text">
-            <img src="/images/profilePic.png" loading="lazy" width="500" alt="Wedding Photo" class="image-3" />
+            <img src="/images/profilePic.png" loading="lazy" width="500" alt="Profile Pic" class="image-3" />
           </div>
         </div>
       </div>
