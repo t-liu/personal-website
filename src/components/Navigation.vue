@@ -84,16 +84,7 @@ export default {
 </script>
 
 <style scoped>
-.company__social-icons {
-  font-size: 24px; /* Match the size of your original PNG */
-  color: #0A66C2; /* LinkedIn brand color */
-  vertical-align: middle; /* Align with surrounding content */
-  transition: color 0.3s ease; /* For hover effects */
-}
-
-.company__social-icons:hover {
-  color: #004182; /* Darker shade for hover */
-}
+/* styling for social media icons are in css file */
 </style>
 
 

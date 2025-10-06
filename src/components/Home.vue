@@ -3,7 +3,7 @@
     <div class="intro">
       <div class="section">
         <h2 class="heading-h1">
-          <img src="/images/icons/handwave.png" alt="Handwave Icon" class="icon">
+          <img src="/images/handwave.png" alt="Handwave Icon" class="icon">
           Hello There!
         </h2>
         <div class="body-text--16">
