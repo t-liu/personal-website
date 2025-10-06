@@ -14,7 +14,7 @@
           />
           Hello There!
         </h2>
-        <div class="body-text--16">
+        <div class="body-text">
           My name is Thomas. I'm a <strong>software engineer</strong> based in the Washington, DC Metro Area.
           My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in a business technoloy environment. 
           Goal is to get into <strong>cloud computing</strong> and <strong>data engineering</strong>.
@@ -35,14 +35,14 @@
       <div id="portfolio" class="category-container">
         <div class="section-title-container">
           <div class="section">
-            <h2 class="heading-h1 white no-margin">Portfolio</h2>
+            <h2 class="heading-h1 white">Portfolio</h2>
           </div>
         </div>
         <div class="section">
           <div class="grid-h">
             <div class="grid-cell grid-cell--50-square">
               <h2 class="heading-h5">Cloud Resume Challenge</h2>
-              <div class="body-text--16">
+              <div class="body-text">
                 Build a custom static webpage from the ground up with a NoSQL database, API gateway, custom DNS, HTTP security, and serverless functions written in Python. 
                 Package the solution into a serverless application model (SAM) template utilizing Amazon's wide variety of cloud services.<br /><br /><br />‍
                 <a href="https://resume.thomasliu.click" target="_blank">Link to Public Resume</a><br />
@@ -59,7 +59,7 @@
           <div class="grid-h">
             <div class="grid-cell grid-cell--50-square">
               <h2 class="heading-h5">Vue.js Migration</h2>
-              <div class="body-text--16">
+              <div class="body-text">
                 Convert a static HTML webpage to a dynamic Vue.js webpage. 
                 Utilizing d3.js for data visualization, leaflet for map on frontend.  
                 Serverless API and MongoDB Atlas on backend.  
@@ -80,7 +80,7 @@
           <div class="grid-h">
             <div class="grid-cell grid-cell--50-square">
               <h2 class="heading-h5">Mulesoft - API</h2>
-              <div class="body-text--16">
+              <div class="body-text">
                 Designed, developed, and deployed an API using Mulesoft Anypoint Platform to get the latest tweets and list of hashtags for a given keyword and n hours from Twitter's API. 
                 This project was part of a coding challenge for an interview process with an emerging life science company.<br /><br />
                 <a href="https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/" target="_blank">API Documentation</a><br />
