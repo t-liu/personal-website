@@ -15,10 +15,20 @@
           Hello There!
         </h2>
         <div class="body-text--16">
-          My name is Thomas. I'm an <strong>aspiring software engineer</strong> that is constantly improving on current skill sets and learning new, cutting-edge technology. 
-          My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in an enterprise environment. 
+          My name is Thomas. I'm a <strong>software engineer</strong> based in the Washington, DC Metro Area.
+          My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in a business technoloy environment. 
           Goal is to get into <strong>cloud computing</strong> and <strong>data engineering</strong>.
+          I always am looking for ways to improve my skill sets and learn new, cutting-edge technology. 
+          <br/><br/>
+          In the meantime, check out my personal website!
         </div>
+      </div>
+    </div>
+    <div class="jokes">
+      <div class="section">
+        <h2 class="heading-h5">Little Humor Before You Browse</h2>
+        <p class="joke-text">{{ joke }}</p>
+        <button class="joke-button" @click="fetchJoke">Get Another Joke</button>
       </div>
     </div>
     <div class="page-content">
@@ -93,6 +103,7 @@ export default {
   data() {
     return {
       isWaving: false,
+      joke: '',
     };
   },
   methods: {
@@ -102,7 +113,24 @@ export default {
     stopWaving() {
       this.isWaving = false;
     },
+    async fetchJoke() {
+      try {
+        const response = await fetch('https://icanhazdadjoke.com', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        const data = await response.json();
+        this.joke = data.joke;
+      } catch (error) {
+        console.error('Error fetching joke:', error);
+        this.joke = 'Oops, something went wrong! Try again.';
+      }
+    }
   },
+  mounted() {
+    this.fetchJoke();
+  }
 };
 </script>
 

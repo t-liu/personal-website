@@ -1,9 +1,9 @@
 <template>
   <div class="side-nav">
     <div class="side-nav-container">
-      <a href="#" @click.prevent="scrollToPortfolio" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/' }">
+      <router-link to="/#portfolio" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/' }">
         Portfolio
-      </a>
+      </router-link>
       <router-link to="/about" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/about' }">
         About
       </router-link>
