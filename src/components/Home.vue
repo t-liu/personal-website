@@ -16,9 +16,9 @@
         </h2>
         <div class="body-text">
           My name is Thomas. I'm a <strong>software engineer</strong> based in the Washington, DC Metro Area.
-          My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in a business technoloy environment. 
+          My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in a business technology environment. 
           Goal is to get into <strong>cloud computing</strong> and <strong>data engineering</strong>.
-          I always am looking for ways to improve my skill sets and learn new, cutting-edge technology. 
+          I am always looking for ways to improve my skill sets and learn new, cutting-edge technology. 
           <br/><br/>
           In the meantime, check out my personal website!
         </div>
