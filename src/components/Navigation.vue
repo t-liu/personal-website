@@ -17,17 +17,17 @@
         <div class="nav__sub-container">
           <a href="#" @click.prevent="scrollToPortfolio" class="nav__item">Portfolio</a>
           <router-link to="/about" class="nav__item">About</router-link>
-          <a href="https://resume.thomasliu.click" class="nav__item" target="_blank">Résumé</a>
-          <a href="https://www.linkedin.com/in/thomas-liu-tech" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my LinkedIn profile">
+          <a :href="resumeUrl" class="nav__item" target="_blank">Résumé</a>
+          <a :href="socialLinks.linkedin" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my LinkedIn profile">
             <font-awesome-icon :icon="['fab', 'linkedin']" class="company__social-icons" aria-label="LinkedIn" />
           </a>
-          <a href="https://twitter.com/tliu301" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my Twitter profile">
+          <a :href="socialLinks.twitter" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my Twitter profile">
             <font-awesome-icon :icon="['fab', 'twitter']" class="company__social-icons" aria-label="Twitter" />
           </a>
-          <a href="https://github.com/t-liu" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my GitHub profile">
+          <a :href="socialLinks.github" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my GitHub profile">
             <font-awesome-icon :icon="['fab', 'github']" class="company__social-icons" aria-label="GitHub" />
           </a>
-          <a href="mailto:thomas.s.liu@gmail.com?subject=Hey%20T-Liu%2C%20I%20Found%20You%20on%20the%20Internet" class="company__social-links w-inline-block" aria-label="Send me an email">
+          <a :href="socialLinks.email" target="_blank" class="company__social-links w-inline-block" aria-label="Send me an email">
             <font-awesome-icon :icon="['far', 'envelope']" class="company__social-icons email" aria-label="Email"/>
           </a>
         </div>
@@ -37,11 +37,15 @@
 </template>
 
 <script>
+import { config } from '../config/env.js'
+
 export default {
   name: 'Navigation',
   data() {
     return {
-      mobileMenuOpen: false
+      mobileMenuOpen: false,
+      socialLinks: config.socialLinks,
+      resumeUrl: config.resumeUrl
     }
   },
   methods: {

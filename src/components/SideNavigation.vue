@@ -7,7 +7,7 @@
       <router-link to="/about" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/about' }">
         About
       </router-link>
-      <a href="https://resume.thomasliu.click" target="_blank" class="btn-primary btn-primary--side-nav w-button">        
+      <a :href="resumeUrl" class="btn-primary btn-primary--side-nav w-button" target="_blank">
         Résumé
         <font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" class="icon" alt="New Tab Icon"/>
       </a>
@@ -16,8 +16,15 @@
 </template>
 
 <script>
+import { config } from '../config/env.js'
+
 export default {
   name: 'SideNavigation',
+  data() {
+    return {
+      resumeUrl: config.resumeUrl
+    }
+  },
   methods: {
     scrollToPortfolio() {
       // If we're not on the home page, navigate there first

@@ -28,7 +28,9 @@
       <div class="section">
         <h2 class="heading-h5">Little Humor Before You Browse</h2>
         <p class="joke-text">{{ joke }}</p>
-        <button class="joke-button" @click="fetchJoke">Get Another Joke</button>
+        <button class="joke-button" @click="fetchJoke" :disabled="loading">
+          {{loading ? 'Loading...' : 'Get Another Joke'}}
+        </button>
       </div>
     </div>
     <div class="page-content">
@@ -98,13 +100,19 @@
 </template>
 
 <script>
+import { useJoke } from '../composables/useJoke.js'
+import { config } from '../config/env.js'
+
 export default {
   name: 'Home',
+  setup() {
+    const { joke, loading, error, fetchJoke } = useJoke()
+    return { joke, loading, error, fetchJoke }
+  },
   data() {
     return {
       isWaving: false,
-      joke: '',
-      cloudinaryBaseUrl: import.meta.env.VITE_CLOUDINARY_BASE_URL || 'https://res.cloudinary.com/decbhr3np/image/upload'
+      cloudinaryBaseUrl: config.cloudinaryBaseUrl
     };
   },
   methods: {
@@ -113,20 +121,6 @@ export default {
     },
     stopWaving() {
       this.isWaving = false;
-    },
-    async fetchJoke() {
-      try {
-        const response = await fetch('https://icanhazdadjoke.com', {
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        const data = await response.json();
-        this.joke = data.joke;
-      } catch (error) {
-        console.error('Error fetching joke:', error);
-        this.joke = 'Oops, something went wrong! Try again.';
-      }
     }
   },
   mounted() {
