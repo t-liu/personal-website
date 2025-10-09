@@ -80,11 +80,14 @@
 </template>
 
 <script>
+import { config } from '../config/env.js'
+
 export default {
   name: 'About',
   data() {
     return {
-      cloudinaryBaseUrl: import.meta.env.VITE_CLOUDINARY_BASE_URL || 'https://res.cloudinary.com/decbhr3np/image/upload',
+      cloudinaryBaseUrl: config.cloudinaryBaseUrl,
+      formspreeEndpoint: config.formspreeEndpoint,
       form: {
         name: '',
         email: '',
@@ -102,7 +105,7 @@ export default {
       this.formSubmitted = false
 
       try {
-        const response = await fetch('https://formspree.io/f/mldwoogl', {
+        const response = await fetch(this.formspreeEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
