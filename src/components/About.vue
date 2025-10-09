@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="grid-cell grid-cell--50-square grid-cell--text">
-            <img src="/images/profilePic.png" loading="lazy" width="500" alt="Profile Pic" class="image-3" />
+            <img :src="`${cloudinaryBaseUrl}/v1760018056/profilePic_y6cz0n.png`" loading="lazy" width="500" alt="Profile Pic" />
           </div>
         </div>
       </div>
@@ -84,6 +84,7 @@ export default {
   name: 'About',
   data() {
     return {
+      cloudinaryBaseUrl: import.meta.env.VITE_CLOUDINARY_BASE_URL || 'https://res.cloudinary.com/decbhr3np/image/upload',
       form: {
         name: '',
         email: '',

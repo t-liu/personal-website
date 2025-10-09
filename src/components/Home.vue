@@ -5,7 +5,7 @@
         <h2 class="heading-h1">
           <!-- check css for handwave animation -->
           <img 
-            src="/images/handwave.png" 
+            :src="`${cloudinaryBaseUrl}/v1760018056/handwave_glnqxh.png`"
             alt="Handwave Icon" 
             class="handwave-img" 
             :class="{ 'wave-animation': isWaving }"
@@ -51,7 +51,7 @@
               </div>
             </div>
             <div class="grid-cell grid-cell--50-square">
-              <img src="/images/resume.png" loading="lazy" alt="Cloud Resume Challenge" />
+              <img :src="`${cloudinaryBaseUrl}/v1760018056/resume_qdcqxb.png`" loading="lazy" alt="Cloud Resume Challenge" />
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div class="grid-cell grid-cell--50-square">
-              <img src="/images/ccpsdemographics.png" loading="lazy" alt="CCPS Demographics Project" />
+              <img :src="`${cloudinaryBaseUrl}/v1760018056/ccpsdemographics_j9rjcb.png`" loading="lazy" alt="CCPS Demographics Website" />
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
               </div>
             </div>
             <div class="grid-cell grid-cell--50-square">
-              <img src="/images/mulesoft.png" loading="lazy" alt="Mulesoft API Project" />
+              <img :src="`${cloudinaryBaseUrl}/v1760018057/mulesoft_azh96d.png`" loading="lazy" alt="Mulesoft API Project" />
             </div>
           </div>
         </div>
@@ -104,6 +104,7 @@ export default {
     return {
       isWaving: false,
       joke: '',
+      cloudinaryBaseUrl: import.meta.env.VITE_CLOUDINARY_BASE_URL || 'https://res.cloudinary.com/decbhr3np/image/upload'
     };
   },
   methods: {
