@@ -47,7 +47,7 @@
               <div class="body-text">
                 Build a custom static webpage from the ground up with a NoSQL database, API gateway, custom DNS, HTTP security, and serverless functions written in Python. 
                 Package the solution into a serverless application model (SAM) template utilizing Amazon's wide variety of cloud services.<br /><br /><br />‍
-                <a href="https://resume.thomasliu.click" target="_blank">Link to Public Resume</a><br />
+                <a :href="resumeUrl" target="_blank">Link to Public Resume</a><br />
                 <a href="https://github.com/t-liu/cloud-resume-challenge-backend" target="_blank">GitHub Repo - Backend</a><br />
                 <a href="https://github.com/t-liu/cloud-resume-challenge-frontend" target="_blank">GitHub Repo - Frontend</a>
               </div>
@@ -112,7 +112,8 @@ export default {
   data() {
     return {
       isWaving: false,
-      cloudinaryBaseUrl: config.cloudinaryBaseUrl
+      cloudinaryBaseUrl: config.cloudinaryBaseUrl,
+      resumeUrl: config.resumeUrl
     };
   },
   methods: {
