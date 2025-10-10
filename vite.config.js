@@ -20,13 +20,13 @@ export default defineConfig(({ mode }) => {
             fontawesome: ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome']
           }
         }
-      }
-    },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: mode === 'production'
+      },
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: mode === 'production',
+          drop_debugger: mode === 'production'
+        }
       }
     },
     define: {
