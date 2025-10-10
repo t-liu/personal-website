@@ -12,10 +12,28 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
-      assetsDir: 'assets'
+      assetsDir: 'assets',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['vue', 'vue-router'],
+            fontawesome: ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome']
+          }
+        }
+      }
+    },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: mode === 'production',
+        drop_debugger: mode === 'production'
+      }
     },
     define: {
       'process.env': env
+    },
+    optimizeDeps: {
+      include: ['vue', 'vue-router', '@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome']
     }
   }
 })
