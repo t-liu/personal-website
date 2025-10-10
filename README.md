@@ -48,7 +48,7 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/personal-website.git
+git clone https://github.com/t-liu/personal-website.git
 cd personal-website
 ```
 
@@ -92,11 +92,6 @@ npm run preview
 - **Image Optimization**: Cloudinary integration for responsive images
 - **Bundle Analysis**: Optimized build configuration
 
-### SEO & Accessibility
-- **Meta Tags**: Comprehensive SEO meta tags
-- **Open Graph**: Social media sharing optimization
-- **Twitter Cards**: Enhanced Twitter sharing
-- **Semantic HTML**: Proper heading hierarchy and ARIA labels
 
 ## 🚀 Deployment
 
