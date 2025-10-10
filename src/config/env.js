@@ -7,6 +7,6 @@ export const config = {
         linkedin: 'https://www.linkedin.com/in/thomas-liu-tech',
         twitter: 'https://twitter.com/tliu301',
         github: 'https://github.com/t-liu',
-        email: 'thomas.s.liu@gmail.com'
+        email: 'mailto:thomas.s.liu@gmail.com?subject=Hey%20T-Liu%2C%20I%20I%20Found%20You%20on%20the%20Internet'
     }
 }

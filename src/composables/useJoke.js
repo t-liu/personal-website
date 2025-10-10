@@ -13,6 +13,11 @@ export function useJoke() {
             const response = await fetch(config.jokeApiUrl, {
                 headers: {'Accept': 'application/json'}
             })
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`)
+            }
+            
             const data = await response.json()
             joke.value = data.joke
         } catch (err) {
