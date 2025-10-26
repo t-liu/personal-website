@@ -644,7 +644,7 @@ img {
 .nav__logo {
   position: relative;
   z-index: 9999;
-  width: 160px;
+  width: 200px;
   min-height: 56px;
   margin-top: 4px;
   margin-bottom: 4px;
@@ -660,8 +660,8 @@ img {
 }
 
 .nav__logo--text {
-  font-family: 'Baloo Bhaijaan 2', cursive;
-  font-size: 28px;
+  font-family: 'Fredoka One', 'Baloo Bhaijaan 2', cursive;
+  font-size: 32px;
   font-weight: 700;
   color: #fc464e;
   display: flex;
