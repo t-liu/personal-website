@@ -1,6 +1,8 @@
 <template>
   <div class="nav nav--fixed">
-    <router-link to="/" class="nav__logo w-inline-block"></router-link>
+    <router-link to="/" class="nav__logo w-inline-block nav__logo--text">
+      thomas liu
+    </router-link>
     <div class="nav__transition-block w-hidden-main"></div>
     <div class="nav__transition-block-2 w-hidden-main"></div>
     <div 

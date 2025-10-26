@@ -648,7 +648,6 @@ img {
   min-height: 56px;
   margin-top: 4px;
   margin-bottom: 4px;
-  background-image: url("https://res.cloudinary.com/decbhr3np/image/upload/v1760018056/personal_satg11.png");
   background-position: 0px 50%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -657,6 +656,21 @@ img {
 }
 
 .nav__logo:hover {
+  opacity: 0.6;
+}
+
+.nav__logo--text {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fc464e;
+  display: flex;
+  align-items: center;
+  background-image: none !important;
+  text-decoration: none;
+}
+
+.nav__logo--text:hover {
   opacity: 0.6;
 }
 
@@ -1453,6 +1467,11 @@ img {
     background-position: 0px 50%;
   }
 
+  .nav__logo--text {
+    font-size: 24px;
+    margin-left: 24px;
+  }
+
   .nav__container {
     position: fixed;
     left: 0px;
@@ -1860,6 +1879,11 @@ img {
 
   .nav__logo {
     width: 130px;
+    margin-left: 0px;
+  }
+
+  .nav__logo--text {
+    font-size: 22px;
     margin-left: 0px;
   }
 
