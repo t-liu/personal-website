@@ -34,63 +34,151 @@
       </div>
     </div>
     <div class="page-content">
-      <div id="portfolio" class="category-container">
-        <div class="section-title-container">
-          <div class="section">
-            <h2 class="heading-h1 white">Portfolio</h2>
+      <div id="portfolio" class="portfolio-section">
+        <!-- Section header -->
+        <div class="section">
+          <div class="portfolio-header">
+            <div class="portfolio-header__line"></div>
+            <h2 class="portfolio-header__title">Featured Projects</h2>
           </div>
         </div>
+
+        <!-- Featured project (first project) -->
         <div class="section">
-          <div class="grid-h">
-            <div class="grid-cell grid-cell--50-square">
-              <h2 class="heading-h5">Cloud Resume Challenge</h2>
-              <div class="body-text">
-                Build a custom static webpage from the ground up with a NoSQL database, API gateway, custom DNS, HTTP security, and serverless functions written in Python. 
-                Package the solution into a serverless application model (SAM) template utilizing Amazon's wide variety of cloud services.<br /><br /><br />‍
-                <a :href="resumeUrl" target="_blank">Link to Public Resume</a><br />
-                <a href="https://github.com/t-liu/cloud-resume-challenge-backend" target="_blank">GitHub Repo - Backend</a><br />
-                <a href="https://github.com/t-liu/cloud-resume-challenge-frontend" target="_blank">GitHub Repo - Frontend</a>
+          <div 
+            class="project-card project-card--featured"
+            :class="{ 'fade-in-up--visible': visibleCards.has('featured') }"
+            ref="featuredCard"
+            data-card-id="featured"
+          >
+            <a 
+              :href="projects[0].links.live" 
+              target="_blank" 
+              class="project-card__image-wrapper project-card__image-wrapper--featured"
+            >
+              <img 
+                :src="`${cloudinaryBaseUrl}/${projects[0].image}`" 
+                :alt="projects[0].title" 
+                class="project-card__image"
+                loading="lazy"
+              />
+              <div class="project-card__overlay">
+                <span class="project-card__overlay-text">View Project →</span>
               </div>
-            </div>
-            <div class="grid-cell grid-cell--50-square">
-              <img :src="`${cloudinaryBaseUrl}/v1760018056/resume_qdcqxb.png`" loading="lazy" alt="Cloud Resume Challenge" />
+            </a>
+            <div class="project-card__content">
+              <h3 class="project-card__title">{{ projects[0].title }}</h3>
+              <p class="project-card__description">{{ projects[0].description }}</p>
+              <div class="project-card__meta">
+                <div class="project-card__meta-item">
+                  <span class="project-card__meta-label">Type</span>
+                  <span class="project-card__meta-value">{{ projects[0].type }}</span>
+                </div>
+                <div class="project-card__meta-divider"></div>
+                <div class="project-card__meta-item">
+                  <span class="project-card__meta-label">Year</span>
+                  <span class="project-card__meta-value">{{ projects[0].year }}</span>
+                </div>
+              </div>
+              <div class="project-card__tags">
+                <span 
+                  v-for="tag in projects[0].tags" 
+                  :key="tag" 
+                  class="project-card__tag"
+                >{{ tag }}</span>
+              </div>
+              <div class="project-card__actions">
+                <a 
+                  :href="projects[0].links.live" 
+                  target="_blank" 
+                  class="project-card__cta"
+                >View Project</a>
+                <div class="project-card__links">
+                  <a 
+                    v-for="repo in projects[0].links.repos" 
+                    :key="repo.url" 
+                    :href="repo.url" 
+                    target="_blank" 
+                    class="project-card__link"
+                    :aria-label="`GitHub repo: ${repo.label}`"
+                  >
+                    <font-awesome-icon :icon="['fab', 'github']" class="project-card__link-icon" />
+                    <span>{{ repo.label }}</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Remaining projects grid -->
         <div class="section">
-          <div class="grid-h">
-            <div class="grid-cell grid-cell--50-square">
-              <h2 class="heading-h5">Vue.js Migration</h2>
-              <div class="body-text">
-                Convert a static HTML webpage to a dynamic Vue.js webpage. 
-                Utilizing d3.js for data visualization, leaflet for map on frontend.  
-                Serverless API and MongoDB Atlas on backend.  
-                Simple data pipeline with Apache Airflow and Python.  
-                Hosted in AWS.<br /><br /><br />‍
-                <a href="https://ccpsdemographics.thomasliu.click" target="_blank">Link to Website</a><br />
-                <a href="https://github.com/t-liu/ccpsdemographics-v2-nodejs" target="_blank">GitHub Repo - Backend</a><br />
-                <a href="https://github.com/t-liu/ccpsdemographics-v2-vue" target="_blank">GitHub Repo - Frontend</a><br/>
-                <a href="https://github.com/t-liu/ccpsdemographics-v2-data-pipeline" target="_blank">GitHub Repo - Data Pipeline</a><br />
+          <div class="project-grid">
+            <div 
+              v-for="(project, index) in projects.slice(1)" 
+              :key="project.title"
+              class="project-card"
+              :class="{ 'fade-in-up--visible': visibleCards.has(`card-${index}`) }"
+              :ref="el => { if (el) projectCardRefs[index] = el }"
+              :data-card-id="`card-${index}`"
+            >
+              <a 
+                :href="project.links.live" 
+                target="_blank" 
+                class="project-card__image-wrapper"
+              >
+                <img 
+                  :src="`${cloudinaryBaseUrl}/${project.image}`" 
+                  :alt="project.title" 
+                  class="project-card__image"
+                  loading="lazy"
+                />
+                <div class="project-card__overlay">
+                  <span class="project-card__overlay-text">View Project →</span>
+                </div>
+              </a>
+              <div class="project-card__content">
+                <h3 class="project-card__title">{{ project.title }}</h3>
+                <p class="project-card__description">{{ project.description }}</p>
+                <div class="project-card__meta">
+                  <div class="project-card__meta-item">
+                    <span class="project-card__meta-label">Type</span>
+                    <span class="project-card__meta-value">{{ project.type }}</span>
+                  </div>
+                  <div class="project-card__meta-divider"></div>
+                  <div class="project-card__meta-item">
+                    <span class="project-card__meta-label">Year</span>
+                    <span class="project-card__meta-value">{{ project.year }}</span>
+                  </div>
+                </div>
+                <div class="project-card__tags">
+                  <span 
+                    v-for="tag in project.tags" 
+                    :key="tag" 
+                    class="project-card__tag"
+                  >{{ tag }}</span>
+                </div>
+                <div class="project-card__actions">
+                  <a 
+                    :href="project.links.live" 
+                    target="_blank" 
+                    class="project-card__cta"
+                  >View Project</a>
+                  <div class="project-card__links">
+                    <a 
+                      v-for="repo in project.links.repos" 
+                      :key="repo.url" 
+                      :href="repo.url" 
+                      target="_blank" 
+                      class="project-card__link"
+                      :aria-label="`GitHub repo: ${repo.label}`"
+                    >
+                      <font-awesome-icon :icon="['fab', 'github']" class="project-card__link-icon" />
+                      <span>{{ repo.label }}</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="grid-cell grid-cell--50-square">
-              <img :src="`${cloudinaryBaseUrl}/v1760018056/ccpsdemographics_j9rjcb.png`" loading="lazy" alt="CCPS Demographics Website" />
-            </div>
-          </div>
-        </div>
-        <div class="section">
-          <div class="grid-h">
-            <div class="grid-cell grid-cell--50-square">
-              <h2 class="heading-h5">Mulesoft - API</h2>
-              <div class="body-text">
-                Designed, developed, and deployed an API using Mulesoft Anypoint Platform to get the latest tweets and list of hashtags for a given keyword and n hours from Twitter's API. 
-                This project was part of a coding challenge for an interview process with an emerging life science company.<br /><br />
-                <a href="https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/" target="_blank">API Documentation</a><br />
-                <a href="https://github.com/t-liu/system-level-api-twitter" target="_blank">GitHub Repo</a>
-              </div>
-            </div>
-            <div class="grid-cell grid-cell--50-square">
-              <img :src="`${cloudinaryBaseUrl}/v1760018057/mulesoft_azh96d.png`" loading="lazy" alt="Mulesoft API Project" />
             </div>
           </div>
         </div>
@@ -113,7 +201,60 @@ export default {
     return {
       isWaving: false,
       cloudinaryBaseUrl: config.cloudinaryBaseUrl,
-      resumeUrl: config.resumeUrl
+      resumeUrl: config.resumeUrl,
+      visibleCards: new Set(),
+      observer: null,
+      projectCardRefs: {},
+      projects: [
+        {
+          title: 'Cloud Resume Challenge',
+          description: 'Full-stack serverless resume site with a NoSQL database, API gateway, custom DNS, HTTP security, and infrastructure as code deployment on AWS.',
+          image: 'v1760018056/resume_qdcqxb.png',
+          type: 'Personal Project',
+          year: '2023',
+          tags: ['AWS', 'Python', 'SAM', 'DynamoDB', 'API Gateway', 'CloudFront'],
+          featured: true,
+          links: {
+            live: config.resumeUrl,
+            repos: [
+              { label: 'Backend', url: 'https://github.com/t-liu/cloud-resume-challenge-backend' },
+              { label: 'Frontend', url: 'https://github.com/t-liu/cloud-resume-challenge-frontend' }
+            ]
+          }
+        },
+        {
+          title: 'Vue.js Migration',
+          description: 'Dynamic data visualization app with D3.js charts, Leaflet maps, a serverless API, MongoDB Atlas, and an Apache Airflow data pipeline.',
+          image: 'v1760018056/ccpsdemographics_j9rjcb.png',
+          type: 'Personal Project',
+          year: '2022',
+          tags: ['Vue.js', 'D3.js', 'Leaflet', 'MongoDB Atlas', 'Apache Airflow', 'AWS'],
+          featured: false,
+          links: {
+            live: 'https://ccpsdemographics.thomasliu.click',
+            repos: [
+              { label: 'Backend', url: 'https://github.com/t-liu/ccpsdemographics-v2-nodejs' },
+              { label: 'Frontend', url: 'https://github.com/t-liu/ccpsdemographics-v2-vue' },
+              { label: 'Data Pipeline', url: 'https://github.com/t-liu/ccpsdemographics-v2-data-pipeline' }
+            ]
+          }
+        },
+        {
+          title: 'Mulesoft — Twitter API',
+          description: 'RESTful API built on Mulesoft Anypoint Platform to retrieve real-time tweets and trending hashtags for a given keyword.',
+          image: 'v1760018057/mulesoft_azh96d.png',
+          type: 'Coding Challenge',
+          year: '2021',
+          tags: ['Mulesoft', 'REST API', 'Anypoint Platform', 'Twitter API', 'Integration'],
+          featured: false,
+          links: {
+            live: 'https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/',
+            repos: [
+              { label: 'Source Code', url: 'https://github.com/t-liu/system-level-api-twitter' }
+            ]
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -122,10 +263,45 @@ export default {
     },
     stopWaving() {
       this.isWaving = false;
+    },
+    setupScrollObserver() {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const cardId = entry.target.dataset.cardId;
+              // Use a new Set to trigger reactivity
+              const newSet = new Set(this.visibleCards);
+              newSet.add(cardId);
+              this.visibleCards = newSet;
+              this.observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      // Observe featured card
+      if (this.$refs.featuredCard) {
+        this.observer.observe(this.$refs.featuredCard);
+      }
+
+      // Observe remaining project cards
+      Object.values(this.projectCardRefs).forEach((el) => {
+        if (el) this.observer.observe(el);
+      });
     }
   },
   mounted() {
     this.fetchJoke();
+    this.$nextTick(() => {
+      this.setupScrollObserver();
+    });
+  },
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 };
 </script>
@@ -133,5 +309,3 @@ export default {
 <style scoped>
 /* Home component styles are in the main CSS file */
 </style>
-
-

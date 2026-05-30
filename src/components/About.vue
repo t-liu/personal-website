@@ -1,82 +1,112 @@
 <template>
+  <div>
+    <!-- About Hero Section -->
     <div class="intro intro-about">
       <div class="section">
-        <div class="grid-h">
-          <div class="grid-cell grid-cell--50-square grid-cell--text">
-            <h2 class="heading-h5">About Me</h2>
-            <div class="body-text">
-              <ul>
-                <li>Studied at University of Maryland, College Park (Go Terps!)</li>
-                <li>Over fifteen years in business technology domain</li>
-                <li>Federal Consulting, REIT, Big Tech</li>
-                <li>Current position: Senior Software Engineer</li>
-                <li>Enjoy basketball, hanging out with family, and traveling</li>
-              </ul>
+        <div class="about-hero">
+          <!-- Text Content -->
+          <div class="about-hero__content">
+            <h1 class="about-hero__title">About Me</h1>
+            <p class="about-bio">
+              Hi, I'm Thomas. I'm a Senior Software Engineer and University of Maryland alum (Go Terps!) with over 15 years of experience in the business technology domain. 
+              Throughout my career, I've had the opportunity to build solutions across diverse environments—from Federal Consulting to REITs and Big Tech.
+            </p>
+            
+            <h3 class="about-section-heading">Industries & Domains</h3>
+            <div class="project-card__tags about-tags">
+              <span class="project-card__tag">Federal Consulting</span>
+              <span class="project-card__tag">REIT</span>
+              <span class="project-card__tag">Big Tech</span>
+              <span class="project-card__tag">Business Technology</span>
             </div>
+
+            <h3 class="about-section-heading">Off-Screen</h3>
+            <p class="about-bio about-bio--small">
+              When I'm not writing code or architecting solutions, you can usually find me playing basketball, hanging out with my family, or traveling to new places.
+            </p>
           </div>
-          <div class="grid-cell grid-cell--50-square grid-cell--text">
-            <img :src="`${cloudinaryBaseUrl}/v1760018056/profilePic_y6cz0n.png`" loading="lazy" width="500" alt="Profile Pic" />
+          
+          <!-- Image Content -->
+          <div class="about-hero__image-container">
+            <div class="profile-image-wrapper">
+              <img 
+                :src="`${cloudinaryBaseUrl}/v1760018056/profilePic_y6cz0n.png`" 
+                loading="lazy" 
+                alt="Thomas Liu Profile Picture" 
+                class="profile-image" 
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="page-content">
-      <div id="contact" class="category-container">
-        <div class="section">
-          <h2 class="heading">Don't be a stranger</h2>
-          <p class="paragraph">Shoot me a message, drop me a DM, holler at your boy. Let me know what sort of project you are working on and if you need someone to help. I am always on the lookout for new opportunities and collaborations with awesome people.</p>
-          <div class="form--container w-container">
+
+    <!-- Contact Section -->
+    <div class="page-content about-page-content">
+      <div id="contact" class="section">
+        <div class="contact-card">
+          <div class="contact-card__header">
+            <h2 class="contact-card__title">Don't be a stranger</h2>
+            <p class="contact-card__description">
+              Shoot me a message, drop me a DM, holler at your boy. Let me know what sort of project you are working on and if you need someone to help. I am always on the lookout for new opportunities and collaborations with awesome people.
+            </p>
+          </div>
+          
+          <div class="contact-card__form">
             <div class="w-form">
-              <form @submit.prevent="submitForm" id="email-form" name="email-form" data-name="Email Form">
-                <input 
-                  type="text" 
-                  class="text-field-4 w-input" 
-                  maxlength="256" 
-                  name="name" 
-                  data-name="Name" 
-                  placeholder="Name" 
-                  id="name" 
-                  v-model="form.name"
-                  required 
-                />
-                <input 
-                  type="email" 
-                  class="text-field-3 w-input" 
-                  maxlength="256" 
-                  name="email" 
-                  data-name="Email" 
-                  placeholder="Email" 
-                  id="email" 
-                  v-model="form.email"
-                  required 
-                />
-                <textarea 
-                  id="Message" 
-                  name="Message" 
-                  maxlength="5000" 
-                  data-name="field" 
-                  placeholder="Message" 
-                  class="textarea w-input"
-                  v-model="form.message"
-                ></textarea>
-                <input 
+              <form @submit.prevent="submitForm" id="email-form" name="email-form">
+                <div class="form-group">
+                  <input 
+                    type="text" 
+                    class="form-input w-input" 
+                    maxlength="256" 
+                    name="name" 
+                    placeholder="Name" 
+                    v-model="form.name"
+                    required 
+                  />
+                </div>
+                <div class="form-group">
+                  <input 
+                    type="email" 
+                    class="form-input w-input" 
+                    maxlength="256" 
+                    name="email" 
+                    placeholder="Email" 
+                    v-model="form.email"
+                    required 
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea 
+                    name="Message" 
+                    maxlength="5000" 
+                    placeholder="Message" 
+                    class="form-input form-textarea w-input"
+                    v-model="form.message"
+                    required
+                  ></textarea>
+                </div>
+                <button 
                   type="submit" 
-                  :value="formSubmitting ? 'Sending...' : 'Send'" 
-                  class="btn-primary btn-primary--active--nav btn-primary--active--white w-button" 
+                  class="project-card__cta contact-submit-btn" 
                   :disabled="formSubmitting"
-                />
+                >
+                  {{ formSubmitting ? 'Sending...' : 'Send Message' }}
+                </button>
               </form>
-              <div v-if="formSubmitted" class="w-form-done">
-                <div>Thank you! Your submission has been received!</div>
+              <div v-if="formSubmitted" class="form-status form-status--success">
+                Thank you! Your submission has been received.
               </div>
-              <div v-if="formError" class="w-form-fail">
-                <div>Oops! Something went wrong while submitting the form.</div>
+              <div v-if="formError" class="form-status form-status--error">
+                Oops! Something went wrong while submitting the form.
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
+  </div>
 </template>
 
 <script>
