@@ -40,7 +40,7 @@ src/
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v24 or higher)
 - npm or yarn
 - Cloudinary account (for image optimization)
 
