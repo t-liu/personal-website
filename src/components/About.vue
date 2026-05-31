@@ -8,8 +8,8 @@
           <div class="about-hero__content">
             <h1 class="about-hero__title">About Me</h1>
             <p class="about-bio">
-              Want to know more about me? I'm a University of Maryland alum (Go Terps! 🐢) with over 15 years of software engineering experience in business technology. 
-              Throughout my career, I've had the opportunity to build solutions across diverse environments—from Federal Consulting 🏛️ to REITs 🏢 and Big Tech ☁️.
+              Want to know more? I'm a University of Maryland alum (Go Terps! 🐢) with over 15 years of software engineering experience in business technology. 
+              Throughout my career, I've had the opportunity to build solutions across diverse environments—from Federal Consulting 🏛️ to REITs 🏢 and Big Tech 💻.
             </p>
             
             <h3 class="about-section-heading">Industries & Domains</h3>
