@@ -16,7 +16,7 @@
         </h2>
         <div class="body-text">
           My name is Thomas. I'm a <strong>software engineer</strong> based in the Washington, DC Metro Area.
-          My main work experience has been building enterprise grade<strong>APIs</strong> and scalable <strong>CI/CD</strong> pipelines. 
+          My main work experience has been building enterprise grade <strong>APIs</strong> and scalable <strong>CI/CD</strong> pipelines. 
           My current interests are shifting toward <strong>cloud computing</strong>, where I’m focused on understanding end-to-end platform architecture, and <strong>AI engineering</strong>, particularly building agent-based systems and practical intelligent applications.
           I’m always looking for opportunities to deepen my skill set and explore emerging technologies.
           <br/><br/>
