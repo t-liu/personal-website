@@ -2732,9 +2732,10 @@ img {
 }
 
 .nav__logo--text {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-size: 32px;
   font-weight: 700;
+  letter-spacing: 0.5px;
   color: #fc464e;
   display: flex;
   align-items: center;
