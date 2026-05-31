@@ -8,8 +8,8 @@
           <div class="about-hero__content">
             <h1 class="about-hero__title">About Me</h1>
             <p class="about-bio">
-              Hi, I'm Thomas. I'm a Senior Software Engineer and University of Maryland alum (Go Terps!) with over 15 years of experience in the business technology domain. 
-              Throughout my career, I've had the opportunity to build solutions across diverse environments—from Federal Consulting to REITs and Big Tech.
+              Want to know more about me? I'm a University of Maryland alum (Go Terps! 🐢) with over 15 years of software engineering experience in business technology. 
+              Throughout my career, I've had the opportunity to build solutions across diverse environments—from Federal Consulting 🏛️ to REITs 🏢 and Big Tech ☁️.
             </p>
             
             <h3 class="about-section-heading">Industries & Domains</h3>
@@ -22,7 +22,7 @@
 
             <h3 class="about-section-heading">Off-Screen</h3>
             <p class="about-bio about-bio--small">
-              When I'm not writing code or architecting solutions, you can usually find me playing basketball, hanging out with my family, or traveling to new places.
+              When I'm not writing code or architecting solutions, you can usually find me playing basketball 🏀, hanging out with my family 👨‍👩‍👧‍👦, or traveling to new places ✈️.
             </p>
           </div>
           

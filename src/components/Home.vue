@@ -16,9 +16,9 @@
         </h2>
         <div class="body-text">
           My name is Thomas. I'm a <strong>software engineer</strong> based in the Washington, DC Metro Area.
-          My main work experience has been building <strong>APIs</strong> and infrastructure as code (<strong>IaC</strong>) in a business technology environment. 
-          Goal is to get into <strong>cloud computing</strong> and <strong>data engineering</strong>.
-          I am always looking for ways to improve my skill sets and learn new, cutting-edge technology. 
+          My main work experience has been building enterprise grade<strong>APIs</strong> and scalable <strong>CI/CD</strong> pipelines. 
+          My current interests are shifting toward <strong>cloud computing</strong>, where I’m focused on understanding end-to-end platform architecture, and <strong>AI engineering</strong>, particularly building agent-based systems and practical intelligent applications.
+          I’m always looking for opportunities to deepen my skill set and explore emerging technologies.
           <br/><br/>
           In the meantime, check out my personal website!
         </div>
@@ -245,7 +245,7 @@ export default {
           image: 'v1760018057/mulesoft_azh96d.png',
           type: 'Coding Challenge',
           year: '2021',
-          tags: ['Mulesoft', 'REST API', 'Anypoint Platform', 'Twitter API', 'Integration'],
+          tags: ['Mulesoft', 'REST API', 'Anypoint Platform', 'Integration'],
           featured: false,
           links: {
             live: 'https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/',
