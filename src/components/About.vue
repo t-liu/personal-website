@@ -16,8 +16,9 @@
             <div class="project-card__tags about-tags">
               <span class="project-card__tag">Federal Consulting</span>
               <span class="project-card__tag">REIT</span>
+              <span class="project-card__tag">Startup</span>
+              <span class="project-card__tag">HealthTech</span>
               <span class="project-card__tag">Big Tech</span>
-              <span class="project-card__tag">Business Technology</span>
             </div>
 
             <h3 class="about-section-heading">Off-Screen</h3>
