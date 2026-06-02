@@ -216,8 +216,10 @@ blockquote {
 }
 
 .intro.intro-about {
-  height: 60vh;
+  height: auto;
+  min-height: 60vh;
   margin-top: 100px;
+  padding-bottom: 60px;
 }
 
 .page.page--w-side-nav {
@@ -901,7 +903,7 @@ blockquote {
 }
 
 .about-page-content {
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 /* ==========================================================================
@@ -1358,7 +1360,10 @@ blockquote {
 
   .intro.intro-about {
     position: relative;
+    height: auto;
+    min-height: unset;
     margin-top: 0;
+    padding-bottom: 40px;
   }
 
   .page.page--w-side-nav {
