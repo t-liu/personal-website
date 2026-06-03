@@ -6,8 +6,8 @@ A modern, responsive personal portfolio website built with Vue.js 3. Originally 
 
 - **Vue.js 3** with Composition API and Options API
 - **Vue Router** for seamless SPA navigation
-- **Vite** for lightning-fast development and optimized builds
-- **Responsive design** maintained from original Webflow design
+- **Vite 8** for lightning-fast development and optimized builds
+- **Light/Dark Mode** functionality with integrated theme toggling
 - **Component-based architecture** for maintainability
 - **Contact form** with Formspree integration
 - **Mobile-friendly navigation** with hamburger menu
@@ -23,6 +23,7 @@ src/
 ├── components/
 │   ├── Navigation.vue      # Header navigation with mobile menu
 │   ├── SideNavigation.vue  # Desktop side navigation
+│   ├── ThemeToggle.vue     # Light/Dark mode switch
 │   ├── Footer.vue          # Footer with social links
 │   ├── Home.vue           # Home page with portfolio and jokes
 │   └── About.vue          # About page with contact form
@@ -31,7 +32,8 @@ src/
 ├── config/
 │   └── env.js             # Centralized configuration
 ├── assets/
-│   └── style.css          # Main styles (converted from original)
+│   ├── style.css          # Main styles with modern CSS Grid architecture
+│   └── dark-mode.css      # Dark theme styling variables and overrides
 ├── App.vue                # Root component
 └── main.js                # Application entry point
 ```
@@ -122,6 +124,8 @@ VITE_CLOUDINARY_BASE_URL=https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
+- `npm run test:unit` - Run unit tests via Vitest
+- `npm run lint:ci` - Run code linting via ESLint
 
 ### Code Quality
 - ESLint configuration (recommended)
