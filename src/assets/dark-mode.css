@@ -1,0 +1,303 @@
+/* ==========================================================================
+   Dark Mode — append this block to the bottom of style.css
+   Applied via data-theme="dark" on <html> (set by ThemeToggle.vue)
+   ========================================================================== */
+
+/* Light mode tokens (explicit defaults so transitions work) */
+:root,
+[data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-bg-subtle: #f5f5f5;
+    --color-bg-card: #ffffff;
+    --color-bg-nav: #ffffff;
+    --color-bg-footer: #000000;
+    --color-bg-side-nav: rgba(93, 20, 23, 0.03);
+
+    --color-text-primary: rgba(0, 0, 0, 0.85);
+    --color-text-secondary: rgba(0, 0, 0, 0.6);
+    --color-text-muted: rgba(0, 0, 0, 0.35);
+    --color-text-nav: rgba(0, 0, 0, 0.8);
+    --color-text-footer: #ffffff;
+
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-border-input: rgba(0, 0, 0, 0.1);
+    --color-border-divider: #ebedf8;
+
+    --color-tag-bg: rgba(0, 0, 0, 0.04);
+    --color-tag-text: rgba(0, 0, 0, 0.55);
+
+    --color-input-bg: #f9f9f9;
+    --color-input-focus-bg: #ffffff;
+
+    --color-joke-bg: #f0f0f0;
+
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+    --shadow-nav: 0 5px 15px rgba(0, 0, 0, 0.10);
+    --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    color-scheme: light;
+}
+
+/* Dark mode tokens */
+[data-theme="dark"] {
+    --color-bg: #0e0e11;
+    --color-bg-subtle: #1a1a1f;
+    --color-bg-card: #18181d;
+    --color-bg-nav: #0e0e11;
+    --color-bg-footer: #050507;
+    --color-bg-side-nav: rgba(252, 70, 78, 0.05);
+
+    --color-text-primary: rgba(255, 255, 255, 0.88);
+    --color-text-secondary: rgba(255, 255, 255, 0.60);
+    --color-text-muted: rgba(255, 255, 255, 0.30);
+    --color-text-nav: rgba(255, 255, 255, 0.85);
+    --color-text-footer: rgba(255, 255, 255, 0.7);
+
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-input: rgba(255, 255, 255, 0.10);
+    --color-border-divider: rgba(255, 255, 255, 0.06);
+
+    --color-tag-bg: rgba(255, 255, 255, 0.06);
+    --color-tag-text: rgba(255, 255, 255, 0.50);
+
+    --color-input-bg: #1e1e25;
+    --color-input-focus-bg: #25252f;
+
+    --color-joke-bg: #1e1e25;
+
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35), 0 1px 4px rgba(0, 0, 0, 0.2);
+    --shadow-nav: 0 5px 15px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------
+   Global token application — smooth transition on theme switch
+   ------------------------------------------------------------------ */
+
+/* Suppresses the transition during the initial data-theme set by
+   the inline script in index.html, preventing a flash on load.
+   ThemeToggle.vue removes this class on the first real toggle. */
+html.no-theme-transition,
+html.no-theme-transition * {
+    transition: none !important;
+}
+
+html {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------------
+   Typography
+   ------------------------------------------------------------------ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-text-primary);
+}
+
+h4 {
+    color: var(--color-text-primary);
+}
+
+p,
+.body-text {
+    color: var(--color-text-secondary);
+}
+
+.about-bio {
+    color: var(--color-text-secondary);
+}
+
+/* ------------------------------------------------------------------
+   Navigation
+   ------------------------------------------------------------------ */
+
+.nav {
+    background-color: var(--color-bg-nav);
+    box-shadow: var(--shadow-nav);
+}
+
+.nav__item,
+.nav__item-2 {
+    color: var(--color-text-nav);
+}
+
+.nav__container {
+    background-color: var(--color-bg-nav);
+}
+
+/* ------------------------------------------------------------------
+   Cards & Surfaces
+   ------------------------------------------------------------------ */
+
+.project-card {
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
+}
+
+.project-card:hover {
+    box-shadow: var(--shadow-card-hover);
+}
+
+.contact-card {
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
+}
+
+.grid-cell.grid-cell--50-square {
+    background-color: var(--color-bg-card);
+}
+
+.grid-cell.grid-cell--50-square.grid-cell--text {
+    background-color: var(--color-bg-subtle);
+}
+
+/* ------------------------------------------------------------------
+   Social icons
+   ------------------------------------------------------------------ */
+
+/* style.css hardcodes color:#000 — override for dark mode */
+[data-theme="dark"] .company__social-icons {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+[data-theme="dark"] .company__social-icons:hover {
+    color: #ffffff;
+}
+
+/* ------------------------------------------------------------------
+   Side nav
+   ------------------------------------------------------------------ */
+
+.side-nav {
+    background-color: var(--color-bg-side-nav);
+}
+
+/* style.css hardcodes color:rgba(0,0,0,0.8) on the side-nav buttons */
+[data-theme="dark"] .btn-primary.btn-primary--side-nav {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+[data-theme="dark"] .btn-primary.btn-primary--side-nav:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Active/current state stays brand red — no override needed */
+
+/* ------------------------------------------------------------------
+   Hardcoded title & heading colors not covered by h1-h6 selector
+   ------------------------------------------------------------------ */
+
+/* These classes use rgba(0,0,0,...) directly in style.css so the
+   generic h1-h6 rule above doesn't reach them */
+[data-theme="dark"] .project-card__title,
+[data-theme="dark"] .portfolio-header__title,
+[data-theme="dark"] .about-hero__title,
+[data-theme="dark"] .contact-card__title,
+[data-theme="dark"] .heading-h1,
+[data-theme="dark"] .heading-h5 {
+    color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .about-section-heading {
+    color: var(--color-text-muted);
+}
+
+/* ------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------ */
+
+.footer-2 {
+    background-color: var(--color-bg-footer);
+}
+
+.footer__bottom-text {
+    color: var(--color-text-footer);
+}
+
+/* ------------------------------------------------------------------
+   Dividers & Borders
+   ------------------------------------------------------------------ */
+
+.line-2 {
+    background-color: var(--color-border-divider);
+}
+
+/* ------------------------------------------------------------------
+   Forms & Inputs
+   ------------------------------------------------------------------ */
+
+.form-input {
+    background-color: var(--color-input-bg);
+    border-color: var(--color-border-input);
+    color: var(--color-text-primary);
+}
+
+.form-input:focus {
+    background-color: var(--color-input-focus-bg);
+}
+
+.form-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* ------------------------------------------------------------------
+   Tags
+   ------------------------------------------------------------------ */
+
+.project-card__tag {
+    background-color: var(--color-tag-bg);
+    color: var(--color-tag-text);
+    border-color: var(--color-border);
+}
+
+/* ------------------------------------------------------------------
+   Jokes widget
+   ------------------------------------------------------------------ */
+
+.joke-text {
+    background-color: var(--color-joke-bg);
+    color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------------
+   Meta text
+   ------------------------------------------------------------------ */
+
+.project-card__description,
+.project-card__meta-value,
+.contact-card__description {
+    color: var(--color-text-secondary);
+}
+
+.project-card__meta-label {
+    color: var(--color-text-muted);
+}
+
+.project-card__meta-divider {
+    background-color: var(--color-border);
+}
+
+.project-card__link {
+    color: var(--color-text-muted);
+}
+
+/* ------------------------------------------------------------------
+   Profile image subtle border in dark mode
+   ------------------------------------------------------------------ */
+
+[data-theme="dark"] .profile-image-wrapper {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}

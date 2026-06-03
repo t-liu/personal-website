@@ -18,6 +18,20 @@
 
     gtag('config', 'G-QZENC2QEMM');
   </script>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+
+      // Apply before first paint
+      document.documentElement.setAttribute('data-theme', theme);
+
+      // Block the CSS transition on html so the initial set is instant,
+      // not animated. ThemeToggle.vue re-enables it on first toggle.
+      document.documentElement.classList.add('no-theme-transition');
+    })();
+  </script>
 </head>
 
 <body>
