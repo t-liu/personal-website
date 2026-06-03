@@ -6,8 +6,9 @@
           <!-- check css for handwave animation -->
           <img 
             :src="`${cloudinaryBaseUrl}/v1760018056/handwave_glnqxh.png`"
-            alt="Handwave Icon" 
-            class="handwave-img" 
+            alt="Handwave Icon"
+            class="handwave-img"
+            loading="lazy"
             :class="{ 'wave-animation': isWaving }"
             @mouseover="startWaving"
             @mouseleave="stopWaving"
