@@ -48,7 +48,7 @@
 
     --color-text-primary: rgba(255, 255, 255, 0.88);
     --color-text-secondary: rgba(255, 255, 255, 0.60);
-    --color-text-muted: rgba(255, 255, 255, 0.30);
+    --color-text-muted: rgba(255, 255, 255, 0.55);
     --color-text-nav: rgba(255, 255, 255, 0.85);
     --color-text-footer: rgba(255, 255, 255, 0.7);
 
@@ -57,7 +57,7 @@
     --color-border-divider: rgba(255, 255, 255, 0.06);
 
     --color-tag-bg: rgba(255, 255, 255, 0.06);
-    --color-tag-text: rgba(255, 255, 255, 0.50);
+    --color-tag-text: rgba(255, 255, 255, 0.70);
 
     --color-input-bg: #1e1e25;
     --color-input-focus-bg: #25252f;
