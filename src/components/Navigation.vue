@@ -5,6 +5,12 @@
     </router-link>
     <div class="nav__transition-block"></div>
     <div class="nav__transition-block-2"></div>
+
+    <!-- Mobile-only: toggle sits left of the hamburger in the top bar -->
+    <div class="toggle-mobile">
+      <ThemeToggle />
+    </div>
+
     <div 
       @click="toggleMobileMenu" 
       class="nav-hamburger-btn"
@@ -32,7 +38,10 @@
           <a :href="socialLinks.email" target="_blank" class="company__social-links" aria-label="Send me an email">
             <font-awesome-icon :icon="['far', 'envelope']" class="company__social-icons email" aria-label="Email"/>
           </a>
-          <ThemeToggle />
+          <!-- Desktop-only: toggle sits after social icons in the nav -->
+          <div class="toggle-desktop">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </div>
@@ -91,5 +100,28 @@ export default {
 </script>
 
 <style scoped>
-/* styling for social media icons are in css file */
+/* Desktop: show the toggle inside the nav panel, hide the outer one */
+.toggle-desktop {
+  display: inline-flex;
+  align-items: center;
+}
+
+.toggle-mobile {
+  display: none;
+}
+
+/* Mobile (≤991px): flip — hide inside panel, show next to hamburger */
+@media screen and (max-width: 991px) {
+  .toggle-desktop {
+    display: none;
+  }
+
+  .toggle-mobile {
+    display: inline-flex;
+    align-items: center;
+    /* Sits between logo area and hamburger; give it breathing room */
+    margin-left: auto;
+    margin-right: 8px;
+  }
+}
 </style>

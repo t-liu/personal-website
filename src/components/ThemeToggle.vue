@@ -53,6 +53,18 @@ export default {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     this.isDark = saved ? saved === 'dark' : prefersDark
     this.applyTheme()
+
+    // Stay in sync if the other instance (desktop/mobile) toggles first
+    this._syncHandler = (e) => {
+      if (e.detail.isDark !== this.isDark) {
+        this.isDark = e.detail.isDark
+      }
+    }
+    document.addEventListener('theme-change', this._syncHandler)
+  },
+
+  beforeUnmount() {
+    document.removeEventListener('theme-change', this._syncHandler)
   },
 
   methods: {
@@ -62,6 +74,10 @@ export default {
       localStorage.setItem('theme', this.isDark ? 'dark' : 'light')
       // Re-enable CSS transitions after the first manual toggle
       document.documentElement.classList.remove('no-theme-transition')
+      // Notify the sibling instance
+      document.dispatchEvent(
+        new CustomEvent('theme-change', { detail: { isDark: this.isDark } })
+      )
     },
 
     applyTheme() {

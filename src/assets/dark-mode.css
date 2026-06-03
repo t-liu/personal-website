@@ -1,6 +1,5 @@
 /* ==========================================================================
-   Dark Mode — append this block to the bottom of style.css
-   Applied via data-theme="dark" on <html> (set by ThemeToggle.vue)
+   Dark Mode — applied via data-theme="dark" on <html> (set by ThemeToggle.vue)
    ========================================================================== */
 
 /* Light mode tokens (explicit defaults so transitions work) */
@@ -117,6 +116,20 @@ p,
 
 .about-bio {
     color: var(--color-text-secondary);
+}
+
+/* ------------------------------------------------------------------
+   Hamburger button lines
+   ------------------------------------------------------------------ */
+
+/* style.css sets background-color: #141212 (near-black) on all three
+   lines. The general .line-2 rule above only covers the divider use;
+   target the hamburger context specifically so all three bars are
+   visible against the dark nav background. */
+[data-theme="dark"] .nav-hamburger-btn .line-1,
+[data-theme="dark"] .nav-hamburger-btn .line-2,
+[data-theme="dark"] .nav-hamburger-btn .line-3 {
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 /* ------------------------------------------------------------------
