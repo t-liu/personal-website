@@ -361,6 +361,31 @@ blockquote {
   margin-bottom: 15px;
 }
 
+.joke-skeleton {
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.skeleton-line {
+  height: 16px;
+  background: linear-gradient(90deg, #ebedf8 25%, #e2e2e2 50%, #ebedf8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-line.short {
+  width: 60%;
+  margin-bottom: 0;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
 .joke-button {
   padding: 12px 24px;
   font-size: 16px;

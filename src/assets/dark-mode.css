@@ -280,9 +280,14 @@ p,
    Jokes widget
    ------------------------------------------------------------------ */
 
-.joke-text {
+.joke-text,
+.joke-skeleton {
     background-color: var(--color-joke-bg);
     color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .skeleton-line {
+    background: linear-gradient(90deg, var(--color-border-divider) 25%, var(--color-border) 50%, var(--color-border-divider) 75%);
 }
 
 /* ------------------------------------------------------------------

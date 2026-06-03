@@ -27,7 +27,11 @@
     <section class="jokes" aria-labelledby="jokes-heading">
       <div class="section">
         <h2 id="jokes-heading" class="heading-h5">Little Humor Before You Browse</h2>
-        <p class="joke-text">{{ joke }}</p>
+        <div v-if="loading" class="joke-skeleton">
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line short"></div>
+        </div>
+        <p v-else class="joke-text">{{ joke }}</p>
         <button class="joke-button" @click="fetchJoke" :disabled="loading">
           {{loading ? 'Loading...' : 'Get Another Joke'}}
         </button>
