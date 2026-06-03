@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="intro">
+    <section class="intro" aria-labelledby="intro-heading">
       <div class="section wave-container">
-        <h2 class="heading-h1">
+        <h2 id="intro-heading" class="heading-h1">
           <!-- check css for handwave animation -->
           <img 
             :src="`${cloudinaryBaseUrl}/v1760018056/handwave_glnqxh.png`"
@@ -23,23 +23,23 @@
           In the meantime, check out my personal website!
         </div>
       </div>
-    </div>
-    <div class="jokes">
+    </section>
+    <section class="jokes" aria-labelledby="jokes-heading">
       <div class="section">
-        <h2 class="heading-h5">Little Humor Before You Browse</h2>
+        <h2 id="jokes-heading" class="heading-h5">Little Humor Before You Browse</h2>
         <p class="joke-text">{{ joke }}</p>
         <button class="joke-button" @click="fetchJoke" :disabled="loading">
           {{loading ? 'Loading...' : 'Get Another Joke'}}
         </button>
       </div>
-    </div>
+    </section>
     <div class="page-content">
-      <div id="portfolio" class="portfolio-section">
+      <section id="portfolio" class="portfolio-section" aria-labelledby="portfolio-heading">
         <!-- Section header -->
         <div class="section">
           <div class="portfolio-header">
             <div class="portfolio-header__line"></div>
-            <h2 class="portfolio-header__title">Featured Projects</h2>
+            <h2 id="portfolio-heading" class="portfolio-header__title">Featured Projects</h2>
           </div>
         </div>
 
@@ -182,7 +182,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>

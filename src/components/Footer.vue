@@ -1,5 +1,5 @@
 <template>
-  <div id="footer-info" class="footer-2">
+  <footer id="footer-info" class="footer-2">
     <div class="footer__bottom-text">
       Copyright &copy; {{ new Date().getFullYear() }} · Thomas Liu · All Rights Reserved<br/>
       Made with <a href="https://vuejs.org/" target="_blank" class="link">Vue.js</a>. Hosted on AWS.
@@ -18,7 +18,7 @@
         <font-awesome-icon :icon="['far', 'envelope']" class="company__social-icons email" aria-label="Email"/>
       </a>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>

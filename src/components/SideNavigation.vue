@@ -1,6 +1,6 @@
 <template>
-  <div class="side-nav">
-    <div class="side-nav-container">
+  <aside class="side-nav">
+    <nav class="side-nav-container" aria-label="Sidebar Navigation">
       <router-link to="/#portfolio" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/' }">
         Portfolio
       </router-link>
@@ -11,8 +11,8 @@
         Résumé
         <font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" class="icon" alt="New Tab Icon"/>
       </a>
-    </div>
-  </div>
+    </nav>
+  </aside>
 </template>
 
 <script>

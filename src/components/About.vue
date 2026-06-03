@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- About Hero Section -->
-    <div class="intro intro-about">
+    <section class="intro intro-about" aria-labelledby="about-heading">
       <div class="section">
         <div class="about-hero">
           <!-- Text Content -->
           <div class="about-hero__content">
-            <h1 class="about-hero__title">About Me</h1>
+            <h1 id="about-heading" class="about-hero__title">About Me</h1>
             <p class="about-bio">
               Want to know more? I'm a University of Maryland alum (Go Terps! 🐢) with over 15 years of software engineering experience in business technology. 
               Throughout my career, I've had the opportunity to build solutions across diverse environments—from Federal Consulting 🏛️ to REITs 🏢 and Big Tech 💻.
@@ -40,14 +40,14 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Contact Section -->
     <div class="page-content about-page-content">
-      <div id="contact" class="section">
+      <section id="contact" class="section" aria-labelledby="contact-heading">
         <div class="contact-card">
           <div class="contact-card__header">
-            <h2 class="contact-card__title">Don't be a stranger</h2>
+            <h2 id="contact-heading" class="contact-card__title">Don't be a stranger</h2>
             <p class="contact-card__description">
               Shoot me a message, drop me a DM, holler at your boy. Let me know what sort of project you are working on and if you need someone to help. I am always on the lookout for new opportunities and collaborations with awesome people.
             </p>
@@ -63,6 +63,7 @@
                     maxlength="256" 
                     name="name" 
                     placeholder="Name" 
+                    aria-label="Name"
                     v-model="form.name"
                     required 
                   />
@@ -74,6 +75,7 @@
                     maxlength="256" 
                     name="email" 
                     placeholder="Email" 
+                    aria-label="Email"
                     v-model="form.email"
                     required 
                   />
@@ -83,6 +85,7 @@
                     name="Message" 
                     maxlength="5000" 
                     placeholder="Message" 
+                    aria-label="Message"
                     class="form-input form-textarea w-input"
                     v-model="form.message"
                     required
@@ -105,7 +108,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>

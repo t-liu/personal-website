@@ -1,5 +1,5 @@
 <template>
-  <div class="nav nav--fixed">
+  <header class="nav nav--fixed">
     <router-link to="/" class="nav__logo nav__logo--text">
       thomas liu
     </router-link>
@@ -12,7 +12,13 @@
     </div>
 
     <div 
+      role="button"
+      tabindex="0"
+      aria-label="Toggle mobile menu"
+      :aria-expanded="mobileMenuOpen.toString()"
       @click="toggleMobileMenu" 
+      @keydown.enter="toggleMobileMenu"
+      @keydown.space.prevent="toggleMobileMenu"
       class="nav-hamburger-btn"
       :class="{ 'w--open': mobileMenuOpen }"
     >
@@ -20,7 +26,7 @@
       <div class="line-2"></div>
       <div class="line-3"></div>
     </div>
-    <div class="nav__container" :class="{ 'w--open': mobileMenuOpen }">
+    <nav class="nav__container" aria-label="Main Navigation" :class="{ 'w--open': mobileMenuOpen }">
       <div class="nav__inner-container">
         <div class="nav__sub-container">
           <a href="#" @click.prevent="scrollToPortfolio" class="nav__item">Portfolio</a>
@@ -44,8 +50,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </nav>
+  </header>
 </template>
 
 <script>
