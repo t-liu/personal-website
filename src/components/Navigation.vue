@@ -1,13 +1,13 @@
 <template>
   <div class="nav nav--fixed">
-    <router-link to="/" class="nav__logo w-inline-block nav__logo--text">
+    <router-link to="/" class="nav__logo nav__logo--text">
       thomas liu
     </router-link>
-    <div class="nav__transition-block w-hidden-main"></div>
-    <div class="nav__transition-block-2 w-hidden-main"></div>
+    <div class="nav__transition-block"></div>
+    <div class="nav__transition-block-2"></div>
     <div 
       @click="toggleMobileMenu" 
-      class="nav-hamburger-btn w-hidden-main"
+      class="nav-hamburger-btn"
       :class="{ 'w--open': mobileMenuOpen }"
     >
       <div class="line-1"></div>
@@ -20,18 +20,19 @@
           <a href="#" @click.prevent="scrollToPortfolio" class="nav__item">Portfolio</a>
           <router-link to="/about" class="nav__item">About</router-link>
           <a :href="resumeUrl" class="nav__item" target="_blank">Résumé</a>
-          <a :href="socialLinks.linkedin" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my LinkedIn profile">
+          <a :href="socialLinks.linkedin" target="_blank" class="company__social-links" aria-label="Visit my LinkedIn profile">
             <font-awesome-icon :icon="['fab', 'linkedin']" class="company__social-icons" aria-label="LinkedIn" />
           </a>
-          <a :href="socialLinks.twitter" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my Twitter profile">
+          <a :href="socialLinks.twitter" target="_blank" class="company__social-links" aria-label="Visit my Twitter profile">
             <font-awesome-icon :icon="['fab', 'twitter']" class="company__social-icons" aria-label="Twitter" />
           </a>
-          <a :href="socialLinks.github" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my GitHub profile">
+          <a :href="socialLinks.github" target="_blank" class="company__social-links" aria-label="Visit my GitHub profile">
             <font-awesome-icon :icon="['fab', 'github']" class="company__social-icons" aria-label="GitHub" />
           </a>
-          <a :href="socialLinks.email" target="_blank" class="company__social-links w-inline-block" aria-label="Send me an email">
+          <a :href="socialLinks.email" target="_blank" class="company__social-links" aria-label="Send me an email">
             <font-awesome-icon :icon="['far', 'envelope']" class="company__social-icons email" aria-label="Email"/>
           </a>
+          <ThemeToggle />
         </div>
       </div>
     </div>
@@ -39,6 +40,7 @@
 </template>
 
 <script>
+import ThemeToggle from './ThemeToggle.vue'
 import { config } from '../config/env.js'
 
 export default {
@@ -50,6 +52,7 @@ export default {
       resumeUrl: config.resumeUrl
     }
   },
+  components: { ThemeToggle },
   methods: {
     toggleMobileMenu() {
       this.mobileMenuOpen = !this.mobileMenuOpen
@@ -60,10 +63,8 @@ export default {
       
       // If we're not on the home page, navigate there first
       if (this.$route.path !== '/') {
-        this.$router.push('/')
-        // Wait for navigation to complete, then scroll
-        this.$nextTick(() => {
-          this.performScroll()
+        this.$router.push('/').then(() => {
+          this.$nextTick(this.performScroll)
         })
       } else {
         // We're already on home page, just scroll
@@ -92,5 +93,3 @@ export default {
 <style scoped>
 /* styling for social media icons are in css file */
 </style>
-
-

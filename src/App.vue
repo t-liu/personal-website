@@ -25,7 +25,6 @@ export default {
 </script>
 
 <style>
-@import url('./assets/style.css');
+@import './assets/style.css';
+@import './assets/dark-mode.css';
 </style>
-
-
