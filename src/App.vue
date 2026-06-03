@@ -11,8 +11,9 @@
 
 <script>
 import Navigation from './components/Navigation.vue'
-import SideNavigation from './components/SideNavigation.vue'
-import Footer from './components/Footer.vue'
+import { defineAsyncComponent } from 'vue'
+const SideNavigation = defineAsyncComponent(() => import('./components/SideNavigation.vue'))
+const Footer = defineAsyncComponent(() => import('./components/Footer.vue'))
 
 export default {
   name: 'App',
