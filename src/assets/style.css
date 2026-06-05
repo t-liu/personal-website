@@ -383,7 +383,9 @@ blockquote {
 }
 
 @keyframes shimmer {
-  to { background-position: -200% 0; }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 .joke-button {
@@ -1627,9 +1629,6 @@ blockquote {
   }
 
   .footer-2 {
-    position: absolute;
-    bottom: auto;
-    margin-top: -4px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -1868,10 +1867,6 @@ blockquote {
   }
 
   .footer-2 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: auto;
     padding-top: 10px;
     padding-bottom: 10px;
   }
