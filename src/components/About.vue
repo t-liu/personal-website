@@ -115,9 +115,24 @@
 
 <script>
 import { config } from '../config/env.js'
+import { useHead } from '@unhead/vue'
 
 export default {
   name: 'About',
+  
+  setup() {
+    useHead({
+      title: 'Thomas Liu — About Me',
+      meta: [
+        { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
+        { property: 'og:title',       content: 'Thomas Liu — About Me' },
+        { property: 'og:description', content: 'Software engineer based in Washington DC.' },
+        { property: 'og:url',         content: 'https://thomasliu.click' },
+        { property: 'og:type',        content: 'website' },
+        { name: 'twitter:card',       content: 'summary_large_image' }
+      ],
+    })
+  },
   data() {
     return {
       cloudinaryBaseUrl: config.cloudinaryBaseUrl,
