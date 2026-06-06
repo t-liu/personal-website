@@ -1,3 +1,4 @@
+# This workflow is used to run Lighthouse CI on the main branch.
 name: Lighthouse CI
 
 on:

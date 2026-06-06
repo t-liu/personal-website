@@ -1,3 +1,4 @@
+# This workflow is used to run the CI/CD pipeline on the main branch.
 name: CI/CD Pipeline
 
 on:
