@@ -132,12 +132,22 @@
                 target="_blank" 
                 class="project-card__image-wrapper"
               >
-                <img 
-                  :src="`${cloudinaryBaseUrl}/${project.image}`" 
-                  :alt="project.title" 
-                  class="project-card__image"
-                  loading="lazy"
-                />
+              <img
+                :src="`${cloudinaryBaseUrl}/f_auto,q_auto,w_600/${project.image}`"
+                :srcset="`
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_400/${project.image}  400w,
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_600/${project.image}  600w,
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_1000/${project.image} 1000w
+                `"
+                :sizes="project.featured
+                  ? '(max-width: 991px) 100vw, 55vw'
+                  : '(max-width: 768px) 100vw, 50vw'"
+                :alt="project.title"
+                width="600"
+                height="338"
+                class="project-card__image"
+                loading="lazy"
+              />
                 <div class="project-card__overlay">
                   <span class="project-card__overlay-text">View Project →</span>
                 </div>
