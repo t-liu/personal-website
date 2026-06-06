@@ -38,13 +38,32 @@
 </template>
 
 <script>
-import { useTheme } from '../composables/useTheme.js'
+import { useThemeStore } from '../stores/theme.js'
 
 export default {
   name: 'ThemeToggle',
+
   setup() {
-    const { isDark, toggle } = useTheme()
-    return { isDark, toggle }
+    const theme = useThemeStore()
+
+    // init() reads localStorage / prefers-color-scheme on first mount.
+    // Because Pinia stores are singletons, calling init() on the second
+    // instance (mobile toggle) is a no-op — the state is already set.
+    theme.init()
+
+    return { theme }
+  },
+
+  computed: {
+    isDark() {
+      return this.theme.isDark
+    }
+  },
+
+  methods: {
+    toggle() {
+      this.theme.toggle()
+    }
   }
 }
 </script>
