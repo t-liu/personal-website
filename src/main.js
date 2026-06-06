@@ -4,6 +4,28 @@ import App from './App.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
 
+// google analytics tag
+if (
+  import.meta.env.PROD &&
+  location.hostname !== 'localhost' &&
+  location.hostname !== '127.0.0.1'
+) {
+  const script = document.createElement('script')
+  script.async = true
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-QZENC2QEMM'
+  document.head.appendChild(script)
+
+  window.dataLayer = window.dataLayer || []
+  window.gtag = function () {
+    window.dataLayer.push(arguments)
+  }
+
+  window.gtag('js', new Date())
+  window.gtag('config', 'G-QZENC2QEMM', {
+    send_page_view: false
+  })
+}
+
 // Import Font Awesome core
 import { library } from '@fortawesome/fontawesome-svg-core';
 // Import the Vue Font Awesome component
