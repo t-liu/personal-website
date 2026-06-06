@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createHead } from '@unhead/vue/client'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import Home from './components/Home.vue'
@@ -61,6 +62,7 @@ const router = createRouter({
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon);
+app.use(createHead())
 app.use(router)
 app.mount('#app')
 

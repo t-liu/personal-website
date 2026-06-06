@@ -1,10 +1,10 @@
 <template>
   <aside class="side-nav">
     <nav class="side-nav-container" aria-label="Sidebar Navigation">
-      <router-link to="/#portfolio" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/' }">
+      <router-link to="/#portfolio" class="btn-primary btn-primary--side-nav w-button" :class="{ 'is-active': $route.path === '/' }">
         Portfolio
       </router-link>
-      <router-link to="/about" class="btn-primary btn-primary--side-nav w-button" :class="{ 'w--current': $route.path === '/about' }">
+      <router-link to="/about" class="btn-primary btn-primary--side-nav w-button" :class="{ 'is-active': $route.path === '/about' }">
         About
       </router-link>
       <a :href="resumeUrl" class="btn-primary btn-primary--side-nav w-button" target="_blank">

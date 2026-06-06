@@ -195,10 +195,23 @@
 <script>
 import { useJoke } from '../composables/useJoke.js'
 import { config } from '../config/env.js'
+import { useHead } from '@unhead/vue'
 
 export default {
   name: 'Home',
+  
   setup() {
+    useHead({
+      title: 'Thomas Liu — Software Engineer',
+      meta: [
+        { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
+        { property: 'og:title',       content: 'Thomas Liu — Software Engineer' },
+        { property: 'og:description', content: 'Software engineer based in Washington DC.' },
+        { property: 'og:url',         content: 'https://thomasliu.click' },
+        { property: 'og:type',        content: 'website' },
+        { name: 'twitter:card',       content: 'summary_large_image' },
+      ],
+    })
     const { joke, loading, error, fetchJoke } = useJoke()
     return { joke, loading, error, fetchJoke }
   },

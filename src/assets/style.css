@@ -193,7 +193,7 @@
      color: #000;
    }
    
-   .btn-primary.btn-primary--side-nav.w--current {
+   .btn-primary.btn-primary--side-nav.is-active {
      background-color: rgba(252, 70, 78, 0.15);
      font-family: Roboto, sans-serif;
      color: #fc464e;
@@ -673,7 +673,7 @@
    }
    
    .nav__item:hover,
-   .nav__item.w--current {
+   .nav__item.is-active {
      border-bottom-color: #fc464e;
    }
    
@@ -693,7 +693,7 @@
    }
    
    .nav__item.nav-item--white:hover,
-   .nav__item.nav-item--white.w--current {
+   .nav__item.nav-item--white.is-active {
      border-bottom-color: #fff;
    }
    
@@ -842,7 +842,7 @@
    }
    
    .nav__item-2:hover,
-   .nav__item-2.w--current {
+   .nav__item-2.is-active {
      border-bottom-color: #fc464e;
    }
    
@@ -1699,9 +1699,9 @@
        display: none;
      }
    
-     .nav__container.w--open,
-     .nav__transition-block.w--open,
-     .nav__transition-block-2.w--open {
+     .nav__container.is-open,
+     .nav__transition-block.is-open,
+     .nav__transition-block-2.is-open {
        transform: translate(0%, 0);
      }
    }
@@ -1921,9 +1921,9 @@
        display: flex;
      }
    
-     .nav__container.w--open,
-     .nav__transition-block.w--open,
-     .nav__transition-block-2.w--open {
+     .nav__container.is-open,
+     .nav__transition-block.is-open,
+     .nav__transition-block-2.is-open {
        transform: translate(0%, 0);
      }
    }
@@ -2026,9 +2026,9 @@
        font-size: 5vw;
      }
    
-     .nav__container.w--open,
-     .nav__transition-block.w--open,
-     .nav__transition-block-2.w--open {
+     .nav__container.is-open,
+     .nav__transition-block.is-open,
+     .nav__transition-block-2.is-open {
        transform: translate(0%, 0);
      }
    }
