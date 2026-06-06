@@ -1,41 +1,89 @@
 <template>
-  <footer id="footer-info" class="footer-2">
-    <div class="footer__bottom-text">
-      Copyright &copy; {{ new Date().getFullYear() }} · Thomas Liu · All Rights Reserved<br/>
-      Made with <a href="https://vuejs.org/" target="_blank" class="link">Vue.js</a>. Hosted on AWS.
-    </div>
-    <div class="footer__social-icons">
-      <a :href="socialLinks.linkedin" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my LinkedIn profile">
-        <font-awesome-icon :icon="['fab', 'linkedin']" class="company__social-icons" aria-label="LinkedIn" />
-      </a>
-      <a :href="socialLinks.twitter" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my Twitter profile">
-        <font-awesome-icon :icon="['fab', 'twitter']" class="company__social-icons" aria-label="Twitter" />
-      </a>
-      <a :href="socialLinks.github" target="_blank" class="company__social-links w-inline-block" aria-label="Visit my GitHub profile">
-        <font-awesome-icon :icon="['fab', 'github']" class="company__social-icons" aria-label="GitHub" />
-      </a>
-      <a :href="socialLinks.email" target="_blank" class="company__social-links w-inline-block" aria-label="Send me an email">
-        <font-awesome-icon :icon="['far', 'envelope']" class="company__social-icons email" aria-label="Email"/>
-      </a>
-    </div>
-  </footer>
+  <div>
+    <!--
+      Sentinel: sits in normal document flow at the page bottom.
+      Because .footer-2 is position:fixed it has no height in the DOM,
+      so this 1px div marks where the "bottom of the page" actually is.
+      When it enters the viewport, the fixed footer slides in.
+    -->
+    <div ref="sentinel" class="footer-sentinel" aria-hidden="true"></div>
+
+    <footer
+      id="footer-info"
+      class="footer-2"
+      :class="{ 'footer-2--visible': isVisible }"
+    >
+      <!-- ── your existing footer markup goes here ── -->
+      <div class="nav-sub-container-footer">
+        <a
+          v-for="link in socialLinks"
+          :key="link.label"
+          :href="link.url"
+          target="_blank"
+          class="company__social-links-footer"
+          :aria-label="link.label"
+        >
+          <font-awesome-icon
+            :icon="link.icon"
+            class="company__social-icons"
+          />
+        </a>
+      </div>
+      <div class="footer__bottom-text">
+        © {{ new Date().getFullYear() }} Thomas Liu. All rights reserved.
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script>
-import { config } from '../config/env.js'
-
 export default {
   name: 'Footer',
+
   data() {
     return {
-      socialLinks: config.socialLinks
+      isVisible: false,
+      observer: null,
+
+      socialLinks: [
+        { label: 'LinkedIn', url: 'https://linkedin.com/in/yourhandle', icon: ['fab', 'linkedin'] },
+        { label: 'Twitter',  url: 'https://twitter.com/yourhandle',    icon: ['fab', 'twitter'] },
+        { label: 'GitHub',   url: 'https://github.com/yourhandle',     icon: ['fab', 'github'] },
+        { label: 'Email',    url: 'mailto:you@example.com',            icon: ['far', 'envelope'] },
+      ],
     }
-  }
+  },
+
+  mounted() {
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show footer when sentinel enters viewport; hide when it leaves
+        this.isVisible = entry.isIntersecting
+      },
+      {
+        // Fire as soon as even 1px of the sentinel is visible
+        threshold: 0,
+      }
+    )
+
+    this.observer.observe(this.$refs.sentinel)
+  },
+
+  beforeUnmount() {
+    // Always clean up to avoid memory leaks
+    this.observer?.disconnect()
+  },
 }
 </script>
 
 <style scoped>
-/* Footer styles are in the main CSS file */
+/*
+  The sentinel has no visual presence.
+  Height 1px ensures IntersectionObserver can detect it;
+  a truly zero-height element can be missed by some browsers.
+*/
+.footer-sentinel {
+  height: 1px;
+  pointer-events: none;
+}
 </style>
-
-
