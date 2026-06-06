@@ -1,11 +1,11 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist",
-      "numberOfRuns": 3,
+      "startServerCommand": "npm run preview",
+      "startServerReadyPattern": "Local",
       "url": [
-        "http://localhost/",
-        "http://localhost/about"
+        "http://localhost:4173/",
+        "http://localhost:4173/about"
       ]
     },
     "assert": {
