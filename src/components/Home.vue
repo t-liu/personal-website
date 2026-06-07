@@ -5,7 +5,7 @@
         <h2 id="intro-heading" class="heading-h1">
           <!-- check css for handwave animation -->
           <img 
-            :src="`${cloudinaryBaseUrl}/v1760018056/handwave_glnqxh.png`"
+            :src="`${cloudinaryBaseUrl}/f_auto,q_auto/v1760018056/handwave_glnqxh.png`"
             alt="Handwave Icon"
             class="handwave-img"
             loading="lazy"
@@ -13,6 +13,7 @@
             @mouseover="startWaving"
             @mouseleave="stopWaving"
           />
+          
           Hello There!
         </h2>
         <div class="body-text">
@@ -61,9 +62,19 @@
               target="_blank" 
               class="project-card__image-wrapper project-card__image-wrapper--featured"
             >
-              <img 
-                :src="`${cloudinaryBaseUrl}/${projects[0].image}`" 
-                :alt="projects[0].title" 
+              <img
+                :src="`${cloudinaryBaseUrl}/f_auto,q_auto,w_600/${projects[0].image}`"
+                :srcset="`
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_400/${projects[0].image}  400w,
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_600/${projects[0].image}  600w,
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_1000/${projects[0].image} 1000w
+                `"
+                :sizes="projects[0].featured
+                  ? '(max-width: 991px) 100vw, 55vw'
+                  : '(max-width: 768px) 100vw, 50vw'"
+                :alt="projects[0].title"
+                width="600"
+                height="338"
                 class="project-card__image"
                 loading="lazy"
               />
