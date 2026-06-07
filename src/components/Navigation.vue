@@ -16,7 +16,7 @@
       tabindex="0"
       aria-label="Toggle mobile menu"
       aria-controls="mobile-nav"
-      :aria-expanded="mobileMenuOpen.toString()"
+      :aria-expanded="mobileMenuOpen"
       @click="toggleMobileMenu" 
       @keydown.enter="toggleMobileMenu"
       @keydown.space.prevent="toggleMobileMenu"
@@ -34,29 +34,31 @@
             href="#" 
             @click.prevent="scrollToPortfolio" 
             class="nav__item"
-            :aria-current="$route.path === '/' ? 'page' : undefined"
+            :aria-current="route.path === '/' ? 'page' : undefined"
           >
             Portfolio
           </a>
           <router-link 
             to="/about" 
             class="nav__item"
-            :aria-current="$route.path === '/about' ? 'page' : undefined"
+            :aria-current="route.path === '/about' ? 'page' : undefined"
           >
             About
           </router-link>
           <a :href="resumeUrl" class="nav__item" target="_blank">Résumé</a>
-          <a :href="socialLinks.linkedin" target="_blank" class="company__social-links" aria-label="Visit my LinkedIn profile">
-            <font-awesome-icon :icon="['fab', 'linkedin']" class="company__social-icons" aria-label="LinkedIn" />
-          </a>
-          <a :href="socialLinks.twitter" target="_blank" class="company__social-links" aria-label="Visit my Twitter profile">
-            <font-awesome-icon :icon="['fab', 'twitter']" class="company__social-icons" aria-label="Twitter" />
-          </a>
-          <a :href="socialLinks.github" target="_blank" class="company__social-links" aria-label="Visit my GitHub profile">
-            <font-awesome-icon :icon="['fab', 'github']" class="company__social-icons" aria-label="GitHub" />
-          </a>
-          <a :href="socialLinks.email" target="_blank" class="company__social-links" aria-label="Send me an email">
-            <font-awesome-icon :icon="['far', 'envelope']" class="company__social-icons email" aria-label="Email"/>
+          <a
+            v-for="link in socialLinks"
+            :key="link.label"
+            :href="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="company__social-links"
+            :aria-label="link.label"
+          >
+            <font-awesome-icon
+              :icon="link.icon"
+              class="company__social-icons"
+            />
           </a>
           <!-- Desktop-only: toggle sits after social icons in the nav -->
           <div class="toggle-desktop">
@@ -68,55 +70,51 @@
   </header>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, watch, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import ThemeToggle from './ThemeToggle.vue'
-import { config } from '../config/env.js'
+import { config } from '../config/env'
 
-export default {
-  name: 'Navigation',
-  data() {
-    return {
-      mobileMenuOpen: false,
-      socialLinks: config.socialLinks,
-      resumeUrl: config.resumeUrl
-    }
-  },
-  components: { ThemeToggle },
-  methods: {
-    toggleMobileMenu() {
-      this.mobileMenuOpen = !this.mobileMenuOpen
-    },
-    scrollToPortfolio() {
-      // Close mobile menu first
-      this.mobileMenuOpen = false
-      
-      // If we're not on the home page, navigate there first
-      if (this.$route.path !== '/') {
-        this.$router.push('/').then(() => {
-          this.$nextTick(this.performScroll)
-        })
-      } else {
-        // We're already on home page, just scroll
-        this.performScroll()
-      }
-    },
-    performScroll() {
-      const portfolioElement = document.getElementById('portfolio')
-      if (portfolioElement) {
-        portfolioElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        })
-      }
-    }
-  },
-  watch: {
-    '$route'() {
-      // Close mobile menu when route changes
-      this.mobileMenuOpen = false
-    }
-  }
+const mobileMenuOpen = ref(false)
+
+const { socialLinks, resumeUrl } = config
+
+const route = useRoute()
+const router = useRouter()
+
+const toggleMobileMenu = (): void => {
+  mobileMenuOpen.value = !mobileMenuOpen.value
 }
+
+const performScroll = (): void => {
+  const portfolioElement = document.getElementById('portfolio')
+
+  portfolioElement?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
+const scrollToPortfolio = async (): Promise<void> => {
+  mobileMenuOpen.value = false
+
+  if (route.path !== '/') {
+    await router.push('/')
+    await nextTick()
+    performScroll()
+    return
+  }
+
+  performScroll()
+}
+
+watch(
+  () => route.path,
+  () => {
+    mobileMenuOpen.value = false
+  }
+)
 </script>
 
 <style scoped>

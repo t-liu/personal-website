@@ -20,8 +20,9 @@
           :key="link.label"
           :href="link.url"
           target="_blank"
+          rel="noopener noreferrer"
           class="company__social-links-footer"
-          :aria-label="link.label"
+          :aria-label="link.ariaLabel"
         >
           <font-awesome-icon
             :icon="link.icon"
@@ -30,50 +31,35 @@
         </a>
       </div>
       <div class="footer__bottom-text">
-        © {{ new Date().getFullYear() }} Thomas Liu. All rights reserved.
+        © {{ currentYear }} Thomas Liu. All rights reserved.
       </div>
     </footer>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Footer',
+<script setup lang="ts">
+import { config } from '../config/env'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-  data() {
-    return {
-      isVisible: false,
-      observer: null,
+const currentYear = new Date().getFullYear()
+const isVisible = ref(false)
+const sentinel = ref<HTMLElement | null>(null)
+const observer = ref<IntersectionObserver | null>(null)
+const { socialLinks } = config
 
-      socialLinks: [
-        { label: 'LinkedIn', url: 'https://linkedin.com/in/yourhandle', icon: ['fab', 'linkedin'] },
-        { label: 'Twitter',  url: 'https://twitter.com/yourhandle',    icon: ['fab', 'twitter'] },
-        { label: 'GitHub',   url: 'https://github.com/yourhandle',     icon: ['fab', 'github'] },
-        { label: 'Email',    url: 'mailto:you@example.com',            icon: ['far', 'envelope'] },
-      ],
-    }
-  },
+onMounted(() => {
+  if (!sentinel.value) return
 
-  mounted() {
-    this.observer = new IntersectionObserver(
-      ([entry]) => {
-        // Show footer when sentinel enters viewport; hide when it leaves
-        this.isVisible = entry.isIntersecting
-      },
-      {
-        // Fire as soon as even 1px of the sentinel is visible
-        threshold: 0,
-      }
-    )
+  observer.value = new IntersectionObserver(([entry]) => {
+    isVisible.value = entry.isIntersecting
+  })
 
-    this.observer.observe(this.$refs.sentinel)
-  },
+  observer.value.observe(sentinel.value)
+})
 
-  beforeUnmount() {
-    // Always clean up to avoid memory leaks
-    this.observer?.disconnect()
-  },
-}
+onBeforeUnmount(() => {
+  observer.value?.disconnect()
+})
 </script>
 
 <style scoped>
