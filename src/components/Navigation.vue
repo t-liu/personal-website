@@ -15,6 +15,7 @@
       role="button"
       tabindex="0"
       aria-label="Toggle mobile menu"
+      aria-controls="mobile-nav"
       :aria-expanded="mobileMenuOpen.toString()"
       @click="toggleMobileMenu" 
       @keydown.enter="toggleMobileMenu"
@@ -26,11 +27,24 @@
       <div class="line-2"></div>
       <div class="line-3"></div>
     </div>
-    <nav class="nav__container" aria-label="Main Navigation" :class="{ 'is-open': mobileMenuOpen }">
+    <nav id="mobile-nav" class="nav__container" aria-label="Main Navigation" :class="{ 'is-open': mobileMenuOpen }">
       <div class="nav__inner-container">
         <div class="nav__sub-container">
-          <a href="#" @click.prevent="scrollToPortfolio" class="nav__item">Portfolio</a>
-          <router-link to="/about" class="nav__item">About</router-link>
+          <a 
+            href="#" 
+            @click.prevent="scrollToPortfolio" 
+            class="nav__item"
+            :aria-current="$route.path === '/' ? 'page' : undefined"
+          >
+            Portfolio
+          </a>
+          <router-link 
+            to="/about" 
+            class="nav__item"
+            :aria-current="$route.path === '/about' ? 'page' : undefined"
+          >
+            About
+          </router-link>
           <a :href="resumeUrl" class="nav__item" target="_blank">Résumé</a>
           <a :href="socialLinks.linkedin" target="_blank" class="company__social-links" aria-label="Visit my LinkedIn profile">
             <font-awesome-icon :icon="['fab', 'linkedin']" class="company__social-icons" aria-label="LinkedIn" />

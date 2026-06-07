@@ -2,7 +2,7 @@
   <div class="body-w-menu">
     <Navigation />
     <SideNavigation />
-    <main class="page page--w-side-nav">
+    <main id="main-content" class="page page--w-side-nav">
       <router-view />
     </main>
     <Footer />
