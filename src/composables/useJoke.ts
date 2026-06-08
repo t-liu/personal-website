@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { config } from '../config/env.js'
+import { config } from '../config/env'
 
 export function useJoke() {
     const joke = ref('')

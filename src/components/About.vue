@@ -1,10 +1,8 @@
 <template>
   <div>
-    <!-- About Hero Section -->
     <section class="intro intro-about" aria-labelledby="about-heading">
       <div class="section">
         <div class="about-hero">
-          <!-- Text Content -->
           <div class="about-hero__content">
             <h1 id="about-heading" class="about-hero__title">About Me</h1>
             <p class="about-bio">
@@ -27,7 +25,6 @@
             </p>
           </div>
           
-          <!-- Image Content -->
           <div class="about-hero__image-container">
             <div class="profile-image-wrapper">
               <img
@@ -50,7 +47,6 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
     <div class="page-content about-page-content">
       <section id="contact" class="section" aria-labelledby="contact-heading">
         <div class="contact-card">
@@ -121,67 +117,78 @@
   </div>
 </template>
 
-<script>
-import { config } from '../config/env.js'
+<script setup lang="ts">
+import { ref, reactive } from 'vue'
+import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
 
-export default {
-  name: 'About',
-  
-  setup() {
-    useHead({
-      title: 'Thomas Liu — About Me',
-      meta: [
-        { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
-        { property: 'og:title',       content: 'Thomas Liu — About Me' },
-        { property: 'og:description', content: 'Software engineer based in Washington DC.' },
-        { property: 'og:url',         content: 'https://thomasliu.click' },
-        { property: 'og:type',        content: 'website' },
-        { name: 'twitter:card',       content: 'summary_large_image' }
-      ],
+// -- SEO & Head Data --
+useHead({
+  title: 'Thomas Liu — About Me',
+  meta: [
+    { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
+    { property: 'og:title',       content: 'Thomas Liu — About Me' },
+    { property: 'og:description', content: 'Software engineer based in Washington DC.' },
+    { property: 'og:url',         content: 'https://thomasliu.click' },
+    { property: 'og:type',        content: 'website' },
+    { name: 'twitter:card',       content: 'summary_large_image' }
+  ],
+})
+
+// -- Static Config Variables --
+const { cloudinaryBaseUrl, formspreeEndpoint } = config
+
+// -- Types & Reactive State --
+interface ContactForm {
+  name: string
+  email: string
+  message: string
+}
+
+const form = reactive<ContactForm>({
+  name: '',
+  email: '',
+  message: ''
+})
+
+const formSubmitting = ref<boolean>(false)
+const formSubmitted = ref<boolean>(false)
+const formError = ref<boolean>(false)
+
+// -- Methods --
+const submitForm = async (): Promise<void> => {
+  formSubmitting.value = true
+  formError.value = false
+  formSubmitted.value = false
+
+  try {
+    const controller = new AbortController()
+
+    const response = await fetch(formspreeEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+      signal: controller.signal,
     })
-  },
-  data() {
-    return {
-      cloudinaryBaseUrl: config.cloudinaryBaseUrl,
-      formspreeEndpoint: config.formspreeEndpoint,
-      form: {
+
+    if (response.ok) {
+      formSubmitted.value = true
+      // Reset form state
+      Object.assign(form, {
         name: '',
         email: '',
-        message: ''
-      },
-      formSubmitting: false,
-      formSubmitted: false,
-      formError: false
+        message: '',
+      })
+    } else {
+      throw new Error('Form submission failed')
     }
-  },
-  methods: {
-    async submitForm() {
-      this.formSubmitting = true
-      this.formError = false
-      this.formSubmitted = false
-
-      try {
-        const response = await fetch(this.formspreeEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.form)
-        })
-
-        if (response.ok) {
-          this.formSubmitted = true
-          this.form = { name: '', email: '', message: '' }
-        } else {
-          throw new Error('Form submission failed')
-        }
-      } catch (error) {
-        this.formError = true
-      } finally {
-        this.formSubmitting = false
-      }
-    }
+  } catch (error) {
+      console.error('Form submission failed:', error)
+      formError.value = true
+  } finally {
+    formSubmitting.value = false
   }
 }
 </script>
@@ -189,5 +196,3 @@ export default {
 <style scoped>
 /* About component styles are in the main CSS file */
 </style>
-
-

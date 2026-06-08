@@ -15,40 +15,32 @@
   </aside>
 </template>
 
-<script>
-import { config } from '../config/env.js'
+<script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
+import { config } from '../config/env'
 
-export default {
-  name: 'SideNavigation',
-  data() {
-    return {
-      resumeUrl: config.resumeUrl
-    }
-  },
-  methods: {
-    scrollToPortfolio() {
-      // If we're not on the home page, navigate there first
-      if (this.$route.path !== '/') {
-        this.$router.push('/')
-        // Wait for navigation to complete, then scroll
-        this.$nextTick(() => {
-          this.performScroll()
-        })
-      } else {
-        // We're already on home page, just scroll
-        this.performScroll()
-      }
-    },
-    performScroll() {
-      const portfolioElement = document.getElementById('portfolio')
-      if (portfolioElement) {
-        portfolioElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        })
-      }
-    }
+const route = useRoute()
+const router = useRouter()
+
+const { resumeUrl } = config
+
+const performScroll = (): void => {
+  const portfolioElement = document.getElementById('portfolio')
+
+  portfolioElement?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
+const scrollToPortfolio = async (): Promise<void> => {
+  if (route.path !== '/') {
+    await router.push('/')
+    performScroll()
+    return
   }
+
+  performScroll()
 }
 </script>
 
