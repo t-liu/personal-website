@@ -8,12 +8,14 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:ci": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "serve": "vite preview",
     "test:unit": "vitest run",
-    "lint:ci": "eslint . --ext .js,.vue --max-warnings=0"
+    "lint:ci": "eslint . --ext .js,.ts,.vue --max-warnings=0",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .js,.ts,.vue",
+    "check": "vue-tsc --noEmit && eslint . --ext .js,.ts,.vue"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
@@ -25,21 +27,26 @@
     "@unhead/vue": "^3.1.3",
     "pinia": "^3.0.4",
     "vue": "^3.5.35",
-    "vue-router": "^5.1.0"
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/vue": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/test-utils": "^2.4.6",
     "cypress": "^15.5.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "happy-dom": "^20.0.8",
-    "terser": "^5.44.0",
+    "terser": "^5.48.0",
+    "typescript": "^5.5.4",
     "vite": "^8.0.14",
     "vite-plugin-sitemap": "^0.8.2",
-    "vitest": "^4.0.4"
+    "vitest": "^4.0.4",
+    "vue-eslint-parser": "^10.4.1",
+    "vue-tsc": "^3.3.4"
   },
   "keywords": [
     "vue",

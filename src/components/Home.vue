@@ -131,7 +131,7 @@
               :key="project.title"
               class="project-card"
               :class="{ 'fade-in-up--visible': visibleCards.has(`card-${index}`) }"
-              :ref="el => { if (el) projectCardRefs[index] = el }"
+              :ref="setProjectCardRef(index)"
               :data-card-id="`card-${index}`"
             >
               <a 
@@ -210,7 +210,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick, type ComponentPublicInstance } from 'vue'
 import { useJoke } from '../composables/useJoke'
 import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
@@ -260,8 +260,14 @@ const { cloudinaryBaseUrl } = config
 const isWaving = ref(false)
 const visibleCards = ref<Set<string>>(new Set())
 const featuredCard = ref<HTMLElement | null>(null)
-const projectCardRefs = ref<HTMLElement[]>([])
+const projectCardRefs = ref<(HTMLElement | null)[]>([])
 let observer: IntersectionObserver | null = null
+
+const setProjectCardRef = (index: number) => (el: Element | ComponentPublicInstance | null) => {
+  if (el instanceof HTMLElement) {
+    projectCardRefs.value[index] = el
+  }
+}
 
 // -- Data --
 const projects: Project[] = [
