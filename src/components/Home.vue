@@ -264,9 +264,7 @@ const projectCardRefs = ref<(HTMLElement | null)[]>([])
 let observer: IntersectionObserver | null = null
 
 const setProjectCardRef = (index: number) => (el: Element | ComponentPublicInstance | null) => {
-  if (el instanceof HTMLElement) {
-    projectCardRefs.value[index] = el
-  }
+  projectCardRefs.value[index] = el instanceof HTMLElement ? el : null
 }
 
 // -- Data --
