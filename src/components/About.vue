@@ -162,31 +162,21 @@ const submitForm = async (): Promise<void> => {
   formSubmitted.value = false
 
   try {
-    const controller = new AbortController()
-
     const response = await fetch(formspreeEndpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
-      signal: controller.signal,
     })
 
     if (response.ok) {
       formSubmitted.value = true
-      // Reset form state
-      Object.assign(form, {
-        name: '',
-        email: '',
-        message: '',
-      })
+      Object.assign(form, { name: '', email: '', message: '' })
     } else {
       throw new Error('Form submission failed')
     }
   } catch (error) {
-      console.error('Form submission failed:', error)
-      formError.value = true
+    console.error('Form submission failed:', error)
+    formError.value = true
   } finally {
     formSubmitting.value = false
   }
