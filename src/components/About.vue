@@ -21,7 +21,8 @@
 
             <h3 class="about-section-heading">Off-Screen</h3>
             <p class="about-bio about-bio--small">
-              When I'm not writing code or architecting solutions, you can usually find me playing basketball 🏀, hanging out with my family 👨‍👩‍👧‍👦, or traveling to new places ✈️.
+              When I'm not writing code or architecting solutions, you can usually find me playing basketball 🏀, 
+              hanging out with my family 👨‍👩‍👧‍👦, paying my pet tax 🐕, or traveling to new places ✈️.
             </p>
           </div>
           
