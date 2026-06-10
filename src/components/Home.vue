@@ -372,9 +372,7 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
-  if (observer) {
-    observer?.disconnect()
-  }
+  observer?.disconnect()
 })
 </script>
 
