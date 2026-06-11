@@ -28,14 +28,14 @@ src/
 │   ├── Home.vue           # Home page with portfolio and jokes
 │   └── About.vue          # About page with contact form
 ├── composables/
-│   └── useJoke.js         # Reusable joke API composable
+│   └── useJoke.ts         # Reusable joke API composable
 ├── config/
-│   └── env.js             # Centralized configuration
+│   └── env.ts             # Centralized configuration
 ├── assets/
 │   ├── style.css          # Main styles with modern CSS Grid architecture
 │   └── dark-mode.css      # Dark theme styling variables and overrides
 ├── App.vue                # Root component
-└── main.js                # Application entry point
+└── main.ts                # Application entry point
 ```
 
 ## 🚀 Getting Started
@@ -84,7 +84,7 @@ npm run preview
 
 ### Modern Vue.js Patterns
 - **Composables**: Reusable logic with `useJoke` composable
-- **Centralized Configuration**: All URLs and endpoints in `config/env.js`
+- **Centralized Configuration**: All URLs and endpoints in `config/env.ts`
 - **Component Composition**: Mix of Composition API and Options API
 - **Error Handling**: Proper error states and loading indicators
 

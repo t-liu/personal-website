@@ -37,34 +37,20 @@
   </button>
 </template>
 
-<script>
-import { useThemeStore } from '../stores/theme.js'
+<script setup lang="ts">
+import { computed, onMounted } from 'vue'
+import { useThemeStore } from '../stores/theme'
 
-export default {
-  name: 'ThemeToggle',
+const theme = useThemeStore()
 
-  setup() {
-    const theme = useThemeStore()
+onMounted(() => {
+  theme.init()
+})
 
-    // init() reads localStorage / prefers-color-scheme on first mount.
-    // Because Pinia stores are singletons, calling init() on the second
-    // instance (mobile toggle) is a no-op — the state is already set.
-    theme.init()
+const isDark = computed(() => theme.isDark)
 
-    return { theme }
-  },
-
-  computed: {
-    isDark() {
-      return this.theme.isDark
-    }
-  },
-
-  methods: {
-    toggle() {
-      this.theme.toggle()
-    }
-  }
+const toggle = (): void => {
+  theme.toggle()
 }
 </script>
 

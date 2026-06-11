@@ -9,20 +9,17 @@
   </div>
 </template>
 
-<script>
-import Navigation from './components/Navigation.vue'
+<script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
-const SideNavigation = defineAsyncComponent(() => import('./components/SideNavigation.vue'))
-const Footer = defineAsyncComponent(() => import('./components/Footer.vue'))
+import Navigation from './components/Navigation.vue'
 
-export default {
-  name: 'App',
-  components: {
-    Navigation,
-    SideNavigation,
-    Footer
-  }
-}
+const SideNavigation = defineAsyncComponent(
+  () => import('./components/SideNavigation.vue')
+)
+
+const Footer = defineAsyncComponent(
+  () => import('./components/Footer.vue')
+)
 </script>
 
 <style>

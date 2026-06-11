@@ -1,59 +1,53 @@
 <template>
   <aside class="side-nav">
     <nav class="side-nav-container" aria-label="Sidebar Navigation">
-      <router-link to="/#portfolio" class="btn-primary btn-primary--side-nav w-button" :class="{ 'is-active': $route.path === '/' }">
+      
+      <router-link
+        to="/#portfolio"
+        class="btn-primary btn-primary--side-nav w-button"
+        :class="{ 'is-active': isHome }"
+      >
         Portfolio
       </router-link>
-      <router-link to="/about" class="btn-primary btn-primary--side-nav w-button" :class="{ 'is-active': $route.path === '/about' }">
+
+      <router-link
+        to="/about"
+        class="btn-primary btn-primary--side-nav w-button"
+        :class="{ 'is-active': isAbout }"
+      >
         About
       </router-link>
-      <a :href="resumeUrl" class="btn-primary btn-primary--side-nav w-button" target="_blank">
+
+      <a
+        :href="resumeUrl"
+        class="btn-primary btn-primary--side-nav w-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Résumé
-        <font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" class="icon" alt="New Tab Icon"/>
+        <font-awesome-icon
+          :icon="['fas', 'arrow-up-right-from-square']"
+          class="icon"
+        />
       </a>
+
     </nav>
   </aside>
 </template>
 
-<script>
-import { config } from '../config/env.js'
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { config } from '../config/env'
 
-export default {
-  name: 'SideNavigation',
-  data() {
-    return {
-      resumeUrl: config.resumeUrl
-    }
-  },
-  methods: {
-    scrollToPortfolio() {
-      // If we're not on the home page, navigate there first
-      if (this.$route.path !== '/') {
-        this.$router.push('/')
-        // Wait for navigation to complete, then scroll
-        this.$nextTick(() => {
-          this.performScroll()
-        })
-      } else {
-        // We're already on home page, just scroll
-        this.performScroll()
-      }
-    },
-    performScroll() {
-      const portfolioElement = document.getElementById('portfolio')
-      if (portfolioElement) {
-        portfolioElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        })
-      }
-    }
-  }
-}
+const route = useRoute()
+
+const { resumeUrl } = config
+
+const isHome = computed(() => route.path === '/')
+const isAbout = computed(() => route.path === '/about')
 </script>
 
 <style scoped>
 /* Side navigation styles are in the main CSS file */
 </style>
-
-

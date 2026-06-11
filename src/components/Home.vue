@@ -3,7 +3,6 @@
     <section class="intro" aria-labelledby="intro-heading">
       <div class="section wave-container">
         <h2 id="intro-heading" class="heading-h1">
-          <!-- check css for handwave animation -->
           <img 
             :src="`${cloudinaryBaseUrl}/f_auto,q_auto/v1760018056/handwave_glnqxh.png`"
             alt="Handwave Icon"
@@ -41,7 +40,6 @@
     </section>
     <div class="page-content">
       <section id="portfolio" class="portfolio-section" aria-labelledby="portfolio-heading">
-        <!-- Section header -->
         <div class="section">
           <div class="portfolio-header">
             <div class="portfolio-header__line"></div>
@@ -49,7 +47,6 @@
           </div>
         </div>
 
-        <!-- Featured project (first project) -->
         <div class="section">
           <div 
             class="project-card project-card--featured"
@@ -127,7 +124,6 @@
           </div>
         </div>
 
-        <!-- Remaining projects grid -->
         <div class="section">
           <div class="project-grid">
             <div 
@@ -135,7 +131,7 @@
               :key="project.title"
               class="project-card"
               :class="{ 'fade-in-up--visible': visibleCards.has(`card-${index}`) }"
-              :ref="el => { if (el) projectCardRefs[index] = el }"
+              :ref="setProjectCardRef(index)"
               :data-card-id="`card-${index}`"
             >
               <a 
@@ -213,136 +209,169 @@
   </div>
 </template>
 
-<script>
-import { useJoke } from '../composables/useJoke.js'
-import { config } from '../config/env.js'
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount, nextTick, type ComponentPublicInstance } from 'vue'
+import { useJoke } from '../composables/useJoke'
+import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
 
-export default {
-  name: 'Home',
-  
-  setup() {
-    useHead({
-      title: 'Thomas Liu — Software Engineer',
-      meta: [
-        { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
-        { property: 'og:title',       content: 'Thomas Liu — Software Engineer' },
-        { property: 'og:description', content: 'Software engineer based in Washington DC.' },
-        { property: 'og:url',         content: 'https://thomasliu.click' },
-        { property: 'og:type',        content: 'website' },
-        { name: 'twitter:card',       content: 'summary_large_image' },
-      ],
-    })
-    const { joke, loading, error, fetchJoke } = useJoke()
-    return { joke, loading, error, fetchJoke }
-  },
-  data() {
-    return {
-      isWaving: false,
-      cloudinaryBaseUrl: config.cloudinaryBaseUrl,
-      resumeUrl: config.resumeUrl,
-      visibleCards: new Set(),
-      observer: null,
-      projectCardRefs: {},
-      projects: [
-        {
-          title: 'Cloud Resume Challenge',
-          description: 'Full-stack serverless resume site with a NoSQL database, API gateway, custom DNS, HTTP security, and infrastructure as code deployment on AWS.',
-          image: 'v1760018056/resume_qdcqxb.png',
-          type: 'Personal Project',
-          year: '2023',
-          tags: ['AWS', 'Python', 'SAM', 'DynamoDB', 'API Gateway', 'CloudFront'],
-          featured: true,
-          links: {
-            live: config.resumeUrl,
-            repos: [
-              { label: 'Backend', url: 'https://github.com/t-liu/cloud-resume-challenge-backend' },
-              { label: 'Frontend', url: 'https://github.com/t-liu/cloud-resume-challenge-frontend' }
-            ]
-          }
-        },
-        {
-          title: 'Vue.js Migration',
-          description: 'Dynamic data visualization app with D3.js charts, Leaflet maps, a serverless API, MongoDB Atlas, and an Apache Airflow data pipeline.',
-          image: 'v1760018056/ccpsdemographics_j9rjcb.png',
-          type: 'Personal Project',
-          year: '2022',
-          tags: ['Vue.js', 'D3.js', 'Leaflet', 'MongoDB Atlas', 'Apache Airflow', 'AWS'],
-          featured: false,
-          links: {
-            live: 'https://ccpsdemographics.thomasliu.click',
-            repos: [
-              { label: 'Backend', url: 'https://github.com/t-liu/ccpsdemographics-v2-nodejs' },
-              { label: 'Frontend', url: 'https://github.com/t-liu/ccpsdemographics-v2-vue' },
-              { label: 'Data Pipeline', url: 'https://github.com/t-liu/ccpsdemographics-v2-data-pipeline' }
-            ]
-          }
-        },
-        {
-          title: 'Mulesoft — Twitter API',
-          description: 'RESTful API built on Mulesoft Anypoint Platform to retrieve real-time tweets and trending hashtags for a given keyword.',
-          image: 'v1760018057/mulesoft_azh96d.png',
-          type: 'Coding Challenge',
-          year: '2021',
-          tags: ['Mulesoft', 'REST API', 'Anypoint Platform', 'Integration'],
-          featured: false,
-          links: {
-            live: 'https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/',
-            repos: [
-              { label: 'Source Code', url: 'https://github.com/t-liu/system-level-api-twitter' }
-            ]
-          }
-        }
+// -- Types --
+interface RepoLink {
+  label: string
+  url: string
+}
+
+interface ProjectLinks {
+  live: string
+  repos: RepoLink[]
+}
+
+interface Project {
+  title: string
+  description: string
+  image: string
+  type: string
+  year: string
+  tags: string[]
+  featured: boolean
+  links: ProjectLinks
+}
+
+// -- SEO & Head Data --
+useHead({
+  title: 'Thomas Liu — Software Engineer',
+  meta: [
+    { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
+    { property: 'og:title',       content: 'Thomas Liu — Software Engineer' },
+    { property: 'og:description', content: 'Software engineer based in Washington DC.' },
+    { property: 'og:url',         content: 'https://thomasliu.click' },
+    { property: 'og:type',        content: 'website' },
+    { name: 'twitter:card',       content: 'summary_large_image' },
+  ],
+})
+
+// -- Composables --
+const { joke, loading, fetchJoke } = useJoke()
+
+// -- Static Config Variables --
+const { cloudinaryBaseUrl } = config
+
+// -- State & Refs --
+const isWaving = ref(false)
+const visibleCards = ref<Set<string>>(new Set())
+const featuredCard = ref<HTMLElement | null>(null)
+const projectCardRefs = ref<(HTMLElement | null)[]>([])
+let observer: IntersectionObserver | null = null
+
+const setProjectCardRef = (index: number) => (el: Element | ComponentPublicInstance | null) => {
+  projectCardRefs.value[index] = el instanceof HTMLElement ? el : null
+}
+
+// -- Data --
+const projects: Project[] = [
+  {
+    title: 'Cloud Resume Challenge',
+    description: 'Full-stack serverless resume site with a NoSQL database, API gateway, custom DNS, HTTP security, and infrastructure as code deployment on AWS.',
+    image: 'v1760018056/resume_qdcqxb.png',
+    type: 'Personal Project',
+    year: '2023',
+    tags: ['AWS', 'Python', 'SAM', 'DynamoDB', 'API Gateway', 'CloudFront'],
+    featured: true,
+    links: {
+      live: config.resumeUrl,
+      repos: [
+        { label: 'Backend', url: 'https://github.com/t-liu/cloud-resume-challenge-backend' },
+        { label: 'Frontend', url: 'https://github.com/t-liu/cloud-resume-challenge-frontend' }
       ]
-    };
-  },
-  methods: {
-    startWaving() {
-      this.isWaving = true;
-    },
-    stopWaving() {
-      this.isWaving = false;
-    },
-    setupScrollObserver() {
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const cardId = entry.target.dataset.cardId;
-              // Use a new Set to trigger reactivity
-              const newSet = new Set(this.visibleCards);
-              newSet.add(cardId);
-              this.visibleCards = newSet;
-              this.observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-
-      // Observe featured card
-      if (this.$refs.featuredCard) {
-        this.observer.observe(this.$refs.featuredCard);
-      }
-
-      // Observe remaining project cards
-      Object.values(this.projectCardRefs).forEach((el) => {
-        if (el) this.observer.observe(el);
-      });
     }
   },
-  mounted() {
-    this.fetchJoke();
-    this.$nextTick(() => {
-      this.setupScrollObserver();
-    });
+  {
+    title: 'Vue.js Migration',
+    description: 'Dynamic data visualization app with D3.js charts, Leaflet maps, a serverless API, MongoDB Atlas, and an Apache Airflow data pipeline.',
+    image: 'v1760018056/ccpsdemographics_j9rjcb.png',
+    type: 'Personal Project',
+    year: '2022',
+    tags: ['Vue.js', 'D3.js', 'Leaflet', 'MongoDB Atlas', 'Apache Airflow', 'AWS'],
+    featured: false,
+    links: {
+      live: 'https://ccpsdemographics.thomasliu.click',
+      repos: [
+        { label: 'Backend', url: 'https://github.com/t-liu/ccpsdemographics-v2-nodejs' },
+        { label: 'Frontend', url: 'https://github.com/t-liu/ccpsdemographics-v2-vue' },
+        { label: 'Data Pipeline', url: 'https://github.com/t-liu/ccpsdemographics-v2-data-pipeline' }
+      ]
+    }
   },
-  beforeUnmount() {
-    if (this.observer) {
-      this.observer.disconnect();
+  {
+    title: 'Mulesoft — Twitter API',
+    description: 'RESTful API built on Mulesoft Anypoint Platform to retrieve real-time tweets and trending hashtags for a given keyword.',
+    image: 'v1760018057/mulesoft_azh96d.png',
+    type: 'Coding Challenge',
+    year: '2021',
+    tags: ['Mulesoft', 'REST API', 'Anypoint Platform', 'Integration'],
+    featured: false,
+    links: {
+      live: 'https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/',
+      repos: [
+        { label: 'Source Code', url: 'https://github.com/t-liu/system-level-api-twitter' }
+      ]
     }
   }
-};
+]
+
+// -- Methods --
+const startWaving = (): void => {
+  isWaving.value = true
+}
+
+const stopWaving = (): void => {
+  isWaving.value = false
+}
+
+const setupScrollObserver = (): void => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement
+          const cardId = target.dataset.cardId
+          
+          if (cardId) {
+            // Reassign the ref value with a new Set to trigger reactivity
+            const newSet = new Set(visibleCards.value)
+            newSet.add(cardId)
+            visibleCards.value = newSet
+          }
+          
+          observer?.unobserve(entry.target)
+
+        }
+      })
+    },
+    { threshold: 0.15 }
+  )
+
+  // Observe featured card
+  if (featuredCard.value) {
+    observer.observe(featuredCard.value)
+  }
+
+  // Observe remaining project cards safely
+  projectCardRefs.value.forEach((el) => {
+    if (el) observer?.observe(el)
+  })
+}
+
+// -- Lifecycle Hooks --
+onMounted(async () => {
+  fetchJoke()
+  await nextTick()
+  setupScrollObserver()
+})
+
+onBeforeUnmount(() => {
+  observer?.disconnect()
+})
 </script>
 
 <style scoped>
