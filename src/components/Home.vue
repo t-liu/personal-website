@@ -303,17 +303,17 @@ const projects: Project[] = [
     }
   },
   {
-    title: 'Mulesoft — Twitter API',
-    description: 'RESTful API built on Mulesoft Anypoint Platform to retrieve real-time tweets and trending hashtags for a given keyword.',
-    image: 'v1760018057/mulesoft_azh96d.png',
-    type: 'Coding Challenge',
-    year: '2021',
-    tags: ['Mulesoft', 'REST API', 'Anypoint Platform', 'Integration'],
+    title: 'Greyhound Facts',
+    description: 'FastAPI-powered REST API for serving interesting greyhound facts through simple and fast endpoints. Deployed on AWS with infrastructure as code using CDK.',
+    image: 'v1781230093/greyhound_facts_tf2uuy.png',
+    type: 'Personal Project',
+    year: '2026',
+    tags: ['Python', 'AWS', 'FastAPI', 'DynamoDB', 'Serverless', 'CDK'],
     featured: false,
     links: {
-      live: 'https://anypoint.mulesoft.com/exchange/portals/t-liu-production/de48bde8-7e89-4a67-94ff-67481f7b3cd2/twitter-api/',
+      live: 'https://dev.greyhound-facts.thomasliu.click/v1/docs',
       repos: [
-        { label: 'Source Code', url: 'https://github.com/t-liu/system-level-api-twitter' }
+        { label: 'Backend', url: 'https://github.com/t-liu/greyhound-facts-api' }
       ]
     }
   }
