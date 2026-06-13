@@ -6,6 +6,7 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import App from './App.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
+import Louie from './components/Louie.vue'
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -69,6 +70,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/about',
     component: About
+  },
+  {
+    path: '/puppy',
+    component: Louie
   }
 ]
 
@@ -82,11 +87,11 @@ const router = createRouter({
         behavior: 'smooth'
       }
     }
-  
+
     if (savedPosition) {
       return savedPosition
     }
-  
+
     return { top: 0 }
   }
 })
