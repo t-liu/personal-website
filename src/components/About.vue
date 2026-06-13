@@ -25,17 +25,16 @@
               hanging out with my family 👨‍👩‍👧‍👦, paying my pet tax 🐕, or traveling to new places ✈️.
             </p>
           </div>
-          
           <div class="about-hero__image-container">
             <div class="profile-image-wrapper">
               <img
-                :src="`${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1760018056/profilePic_y6cz0n.png`"
+                :src="`${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1762003824/dog_ivepuy.jpg`"
                 :srcset="`
-                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1760018056/profilePic_y6cz0n.png 400w,
-                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_800/v1760018056/profilePic_y6cz0n.png 800w
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1762003824/dog_ivepuy.jpg 400w,
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_800/v1762003824/dog_ivepuy.jpg 800w
                 `"
                 sizes="(max-width: 767px) 100vw, 400px"
-                alt="Thomas Liu Profile Picture"
+                alt="Louie Profile Picture"
                 width="400"
                 height="500"
                 loading="lazy" 

@@ -18,6 +18,14 @@
         About
       </router-link>
 
+      <router-link
+        to="/puppy"
+        class="btn-primary btn-primary--side-nav w-button"
+        :class="{ 'is-active': isPuppy }"
+      >
+        Puppy
+      </router-link>
+
       <a
         :href="resumeUrl"
         class="btn-primary btn-primary--side-nav w-button"
@@ -46,6 +54,7 @@ const { resumeUrl } = config
 
 const isHome = computed(() => route.path === '/')
 const isAbout = computed(() => route.path === '/about')
+const isPuppy = computed(() => route.path === '/puppy')
 </script>
 
 <style scoped>

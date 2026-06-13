@@ -45,6 +45,13 @@
           >
             About
           </router-link>
+          <router-link 
+            to="/puppy" 
+            class="nav__item"
+            :aria-current="route.path === '/puppy' ? 'page' : undefined"
+          >
+            Puppy
+          </router-link>
           <a :href="resumeUrl" class="nav__item" target="_blank">Résumé</a>
           <a
             v-for="link in socialLinks"
