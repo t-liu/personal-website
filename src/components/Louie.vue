@@ -80,7 +80,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from "vue"
+    import { ref, watch, onUnmounted } from "vue" // Added watch and onUnmounted
     import { config } from '../config/env'
     import { useHead } from '@unhead/vue'
 
@@ -122,6 +122,27 @@ const openViewer = (photo: Photo) => {
     selected.value = photo
 }
 
+// -- KEYBOARD ESCAPE HANDLER --
+const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+        selected.value = null
+    }
+}
+
+// Watch the modal state: dynamically bind/unbind global window listener
+watch(selected, (isModalOpen) => {
+    if (isModalOpen) {
+        window.addEventListener('keydown', handleKeyDown)
+    } else {
+        window.removeEventListener('keydown', handleKeyDown)
+    }
+})
+
+// Fail-safe cleanup to prevent memory leaks if user navigates away while modal is open
+onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeyDown)
+})
+
 // -- DATA --
 const favorites: Photo[] = [
     {
@@ -156,8 +177,6 @@ const favorites: Photo[] = [
     }
 ]
 </script>
-
-https://res.cloudinary.com/decbhr3np/image/upload/v1781384557/louie_summer_og3xmg.png
 
 <style scoped>
     /* ===========================
