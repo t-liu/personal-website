@@ -125,7 +125,7 @@ const connections: Connection[] = [
     name: 'Dr. Smiti Nathan',
     bio: 'Smiti is one of my oldest friends. She is also one of the smartest, if not the smartest. Having spent a majority of her life in research and archaeology, Dr. Nathan now dedicates her time to story telling and curating content about the past. She also has a kick ass podcast!',
     website: 'https://smitinathan.com',
-    cloudinaryUrl: `${cloudinaryBaseUrl}/f_auto,q_auto,w_900/v1781465253/smiti_website_disygq.png`,
+    cloudinaryUrl: `${cloudinaryBaseUrl}/c_fill,g_north,w_600,h_338,f_auto,q_auto/v1781465253/smiti_website_disygq.png`,
     socials: [
       { platform: 'LinkedIn', label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/smiti-nathan' },
       { platform: 'Instagram', label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/travellingarchaeologist' }
@@ -136,7 +136,7 @@ const connections: Connection[] = [
     name: 'Rebecca Deprey',
     bio: 'Becca is a friend of mine from back in school. She also went to University of Maryland, College Park!  She has gone on to become a very, very good full stack software engineer. Nowadays, Becca is building agentic systems and LLM-integrated products at scale.',
     website: 'https://rebeccamdeprey.com',
-    cloudinaryUrl: `${cloudinaryBaseUrl}/f_auto,q_auto,w_900/v1781465253/rebecca_website_ulm89w.png`,
+    cloudinaryUrl: `${cloudinaryBaseUrl}/c_fill,g_north,w_600,h_338,f_auto,q_auto/v1781465253/rebecca_website_ulm89w.png`,
     socials: [
       { platform: 'LinkedIn', label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/rebecca-deprey' },
       { platform: 'GitHub', label: 'GitHub', icon: 'github', url: 'https://github.com/rdeprey' }
@@ -147,7 +147,7 @@ const connections: Connection[] = [
     name: 'Steven Taylor',
     bio: 'Steven Taylor and I used to work for a consulting agency. He was a good system administrator.  He is a much better photographer.  How much better?  Steven Taylor is an award-winning documentary and landscape photographer!  Go check out his studio in Philadelphia.',
     website: 'https://www.ubuntufa.com/',
-    cloudinaryUrl: `${cloudinaryBaseUrl}/f_auto,q_auto,w_900/v1781465368/steven_taylor_website_fbrljy.png`,
+    cloudinaryUrl: `${cloudinaryBaseUrl}/c_fill,g_north,w_600,h_338,f_auto,q_auto/v1781465368/steven_taylor_website_fbrljy.png`,
     socials: [
       { platform: 'Instagram', label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/stevencwtaylor' }
     ]
