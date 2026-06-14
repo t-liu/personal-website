@@ -27,7 +27,7 @@
 
                         <h3 class="about-section-heading">Fun Facts</h3>
                         <p class="about-bio about-bio--small">
-                            Born March 2013 in Florida.  Raced 100+ times.  Won a few.  Retired after 4.5 years.  Rescued by my humans July 2019.
+                            Born March 2015 in Florida.  Raced 100+ times.  Won a few.  Retired after 4.5 years.  Rescued by my humans July 2019.
                             <br><br>
                             Since then, I have enjoyed retirement and all the perks that come with it.  
                             Have traveled a bunch around the US mid-atlantic region (New York, Boston, Pittsburgh, Outer Banks, Charleston, etc.)

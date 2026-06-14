@@ -7,6 +7,7 @@ import App from './App.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
 import Louie from './components/Louie.vue'
+import Connections from './components/Connections.vue'
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -14,7 +15,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faLinkedin,
   faTwitter,
-  faGithub
+  faGithub,
+  faInstagram
 } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
@@ -57,6 +59,7 @@ library.add(
   faLinkedin,
   faTwitter,
   faGithub,
+  faInstagram,
   faEnvelope,
   faArrowUpRightFromSquare
 )
@@ -74,6 +77,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/puppy',
     component: Louie
+  },
+  {
+    path: '/connections',
+    component: Connections
   }
 ]
 

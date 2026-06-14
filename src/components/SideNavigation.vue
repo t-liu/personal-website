@@ -26,6 +26,14 @@
         Puppy
       </router-link>
 
+      <router-link
+        to="/connections"
+        class="btn-primary btn-primary--side-nav w-button"
+        :class="{ 'is-active': isConnections }"
+      >
+        Connections
+      </router-link>      
+
       <a
         :href="resumeUrl"
         class="btn-primary btn-primary--side-nav w-button"
@@ -55,6 +63,7 @@ const { resumeUrl } = config
 const isHome = computed(() => route.path === '/')
 const isAbout = computed(() => route.path === '/about')
 const isPuppy = computed(() => route.path === '/puppy')
+const isConnections = computed(() => route.path === '/connections')
 </script>
 
 <style scoped>
