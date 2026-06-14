@@ -28,13 +28,13 @@
           <div class="about-hero__image-container">
             <div class="profile-image-wrapper">
               <img
-                :src="`${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1762003824/dog_ivepuy.jpg`"
+                :src="`${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1760018056/profilePic_y6cz0n.png`"
                 :srcset="`
-                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1762003824/dog_ivepuy.jpg 400w,
-                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_800/v1762003824/dog_ivepuy.jpg 800w
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_400/v1760018056/profilePic_y6cz0n.png 400w,
+                  ${cloudinaryBaseUrl}/f_auto,q_auto,w_800/v1760018056/profilePic_y6cz0n.png 800w
                 `"
                 sizes="(max-width: 767px) 100vw, 400px"
-                alt="Louie Profile Picture"
+                alt="Thomas Liu Profile Picture"
                 width="400"
                 height="500"
                 loading="lazy" 

@@ -27,11 +27,11 @@
 
                         <h3 class="about-section-heading">Fun Facts</h3>
                         <p class="about-bio about-bio--small">
-                            Born March 2013 in Florida.  Raced 100+ times.  Won very little.  Retired after 4.5 years.  Rescued by my humans July 2019.
+                            Born March 2013 in Florida.  Raced 100+ times.  Won a few.  Retired after 4.5 years.  Rescued by my humans July 2019.
                             <br><br>
                             Since then, I have enjoyed retirement and all the perks that come with it.  
-                            Have traveled a bunch around the eastern seaboard US (Pittsburgh, New York, Boston, Outer Banks, etc.)
-                            When I'm not on vacation, I'm usually napping on the couch or trying to convince my humans to give me treats.
+                            Have traveled a bunch around the US mid-atlantic region (New York, Boston, Pittsburgh, Outer Banks, Charleston, etc.)
+                            When I'm not on vacation, I'm usually napping on my bed or looking cute so I coerce my humans to give me a treat.
                         </p>
                     </div>
 
@@ -53,6 +53,13 @@
             <div class="dog-favorites-grid">
                 <div v-for="photo in favorites" :key="photo.publicId" class="favorite-card" @click="openViewer(photo)">
                     <img :src="cloud(photo.publicId, 900)" :alt="photo.title" loading="lazy" />
+
+                    <div class="zoom-indicator" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </section>
@@ -191,6 +198,7 @@ const favorites: Photo[] = [
     }
 
     .favorite-card {
+        position: relative; /* anchors the absolute icon to the card corners */
         border-radius: 16px;
         overflow: hidden;
         cursor: pointer;
@@ -208,8 +216,39 @@ const favorites: Photo[] = [
         transition: transform 0.4s ease;
     }
 
+        .zoom-indicator {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        background: rgba(0, 0, 0, 0.45); /* Muted dark pill background */
+        backdrop-filter: blur(4px);      /* Modern frosted glass effect */
+        -webkit-backdrop-filter: blur(4px);
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.75;                   /* Subtly visible by default */
+        transform: scale(0.95);
+        transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+        pointer-events: none;            /* Critical: clicks pass right through to the card click handler */
+    }
+
+    .zoom-indicator svg {
+        width: 16px;
+        height: 16px;
+    }
+
     .favorite-card:hover img {
         transform: scale(1.03);
+    }
+
+    .favorite-card:hover .zoom-indicator {
+        opacity: 1;
+        transform: scale(1);
+        background: rgba(0, 0, 0, 0.65); /* Darkens slightly on hover for extra pop */
     }
 
     /* ===========================
