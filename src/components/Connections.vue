@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Intro / Context Header Section -->
     <section class="intro" aria-labelledby="connections-heading">
       <div class="section">
         <h1 id="connections-heading" class="heading-h1">Connections</h1>
@@ -11,7 +10,6 @@
       </div>
     </section>
 
-    <!-- Unified Connection Grid -->
     <div class="page-content">
       <section class="portfolio-section" aria-label="Connections Grid">
         <div class="section">
@@ -24,15 +22,13 @@
               :ref="setCardRef(index)"
               :data-card-id="`card-${index}`"
             >
-              <!-- Card Image / Dynamic Link Preview Wrapper -->
               <a 
                 :href="item.website" 
                 target="_blank" 
                 class="project-card__image-wrapper"
               >
-                <!-- Microlink handles background rendering and sizing automatically -->
                 <img
-                  :src="`/connections/${item.id}.png`"
+                  :src="item.cloudinaryUrl"
                   :alt="`${item.name} website preview`"
                   width="600"
                   height="338"
@@ -44,12 +40,10 @@
                 </div>
               </a>
 
-              <!-- Card Core Text Content -->
               <div class="project-card__content">
                 <h3 class="project-card__title">{{ item.name }}</h3>
                 <p class="project-card__description">{{ item.bio }}</p>
                 
-                <!-- Action Row -->
                 <div class="project-card__actions" style="margin-top: auto;">
                   <a 
                     :href="item.website" 
@@ -83,6 +77,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, nextTick, type ComponentPublicInstance } from 'vue'
+import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
 
 // -- Type Specifications --
@@ -98,6 +93,7 @@ interface Connection {
   name: string
   bio: string
   website: string
+  cloudinaryUrl: string // Tracks the static asset delivery endpoint
   socials: SocialLink[]
 }
 
@@ -112,6 +108,9 @@ useHead({
   ],
 })
 
+// -- Static Config Variables --
+const { cloudinaryBaseUrl } = config
+
 // -- Dynamic Interaction & Animation States --
 const visibleCards = ref<Set<string>>(new Set())
 const cardRefs = ref<(HTMLElement | null)[]>([])
@@ -120,13 +119,13 @@ let observer: IntersectionObserver | null = null
 const setCardRef = (index: number) => (el: Element | ComponentPublicInstance | null) => {
   cardRefs.value[index] = el instanceof HTMLElement ? el : null
 }
-
 const connections: Connection[] = [
   {
     id: 'smiti-nathan',
     name: 'Dr. Smiti Nathan',
     bio: 'Smiti is one of my oldest friends. She is also one of the smartest, if not the smartest. Having spent a majority of her life in research and archaeology, Dr. Nathan now dedicates her time to story telling and curating content about the past. She also has a kick ass podcast!',
     website: 'https://smitinathan.com',
+    cloudinaryUrl: `${cloudinaryBaseUrl}/f_auto,q_auto,w_900/v1781465253/smiti_website_disygq.png`,
     socials: [
       { platform: 'LinkedIn', label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/smiti-nathan' },
       { platform: 'Instagram', label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/travellingarchaeologist' }
@@ -137,6 +136,7 @@ const connections: Connection[] = [
     name: 'Rebecca Deprey',
     bio: 'Becca is a friend of mine from back in school. She also went to University of Maryland, College Park!  She has gone on to become a very, very good full stack software engineer. Nowadays, Becca is building agentic systems and LLM-integrated products at scale.',
     website: 'https://rebeccamdeprey.com',
+    cloudinaryUrl: `${cloudinaryBaseUrl}/f_auto,q_auto,w_900/v1781465253/rebecca_website_ulm89w.png`,
     socials: [
       { platform: 'LinkedIn', label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/rebecca-deprey' },
       { platform: 'GitHub', label: 'GitHub', icon: 'github', url: 'https://github.com/rdeprey' }
@@ -147,6 +147,7 @@ const connections: Connection[] = [
     name: 'Steven Taylor',
     bio: 'Steven Taylor and I used to work for a consulting agency. He was a good system administrator.  He is a much better photographer.  How much better?  Steven Taylor is an award-winning documentary and landscape photographer!  Go check out his studio in Philadelphia.',
     website: 'https://www.ubuntufa.com/',
+    cloudinaryUrl: `${cloudinaryBaseUrl}/f_auto,q_auto,w_900/v1781465368/steven_taylor_website_fbrljy.png`,
     socials: [
       { platform: 'Instagram', label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/stevencwtaylor' }
     ]

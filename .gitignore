@@ -34,6 +34,3 @@ coverage
 .gitattributes
 .prettierrc.json
 .env
-
-# Generated connection screenshots
-public/connections/
