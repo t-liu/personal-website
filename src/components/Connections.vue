@@ -80,6 +80,9 @@ import { ref, onMounted, onBeforeUnmount, nextTick, type ComponentPublicInstance
 import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
 
+// -- Static Config Variables --
+const { cloudinaryBaseUrl } = config
+
 // -- Type Specifications --
 interface SocialLink {
   platform: string
@@ -104,12 +107,13 @@ useHead({
     { name: 'description',        content: 'Friends of T-Liu who are doing big things in life.' },
     { property: 'og:title',       content: 'Thomas Liu - Connections' },
     { property: 'og:description', content: 'Friends of T-Liu who are doing big things in life.' },
-    { property: 'og:type',        content: 'website' }
+    { property: 'og:url',         content: 'https://thomasliu.click/connections' },
+    { property: 'og:image',       content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
+    { property: 'og:type',        content: 'website' },
+    { name: 'twitter:card',       content: 'summary_large_image' },
+    { name: 'twitter:image',      content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
   ],
 })
-
-// -- Static Config Variables --
-const { cloudinaryBaseUrl } = config
 
 // -- Dynamic Interaction & Animation States --
 const visibleCards = ref<Set<string>>(new Set())

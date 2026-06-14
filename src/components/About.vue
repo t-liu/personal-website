@@ -122,6 +122,9 @@ import { ref, reactive } from 'vue'
 import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
 
+// -- Static Config Variables --
+const { cloudinaryBaseUrl, formspreeEndpoint } = config
+
 // -- SEO & Head Data --
 useHead({
   title: 'Thomas Liu — About Me',
@@ -129,14 +132,13 @@ useHead({
     { name: 'description',        content: 'Software engineer based in Washington DC specializing in building enterprise grade APIs and scalable CI/CD pipelines.' },
     { property: 'og:title',       content: 'Thomas Liu — About Me' },
     { property: 'og:description', content: 'Software engineer based in Washington DC.' },
-    { property: 'og:url',         content: 'https://thomasliu.click' },
+    { property: 'og:url',         content: 'https://thomasliu.click/about' },
+    { property: 'og:image',       content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
     { property: 'og:type',        content: 'website' },
-    { name: 'twitter:card',       content: 'summary_large_image' }
+    { name: 'twitter:card',       content: 'summary_large_image' },
+    { name: 'twitter:image',      content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
   ],
 })
-
-// -- Static Config Variables --
-const { cloudinaryBaseUrl, formspreeEndpoint } = config
 
 // -- Types & Reactive State --
 interface ContactForm {

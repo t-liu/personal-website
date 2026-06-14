@@ -215,6 +215,12 @@ import { useJoke } from '../composables/useJoke'
 import { config } from '../config/env'
 import { useHead } from '@unhead/vue'
 
+// -- Static Config Variables --
+const { cloudinaryBaseUrl } = config
+
+// -- Composables --
+const { joke, loading, fetchJoke } = useJoke()
+
 // -- Types --
 interface RepoLink {
   label: string
@@ -245,16 +251,12 @@ useHead({
     { property: 'og:title',       content: 'Thomas Liu — Software Engineer' },
     { property: 'og:description', content: 'Software engineer based in Washington DC.' },
     { property: 'og:url',         content: 'https://thomasliu.click' },
+    { property: 'og:image',       content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
     { property: 'og:type',        content: 'website' },
     { name: 'twitter:card',       content: 'summary_large_image' },
+    { name: 'twitter:image',      content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
   ],
 })
-
-// -- Composables --
-const { joke, loading, fetchJoke } = useJoke()
-
-// -- Static Config Variables --
-const { cloudinaryBaseUrl } = config
 
 // -- State & Refs --
 const isWaving = ref(false)
@@ -304,7 +306,7 @@ const projects: Project[] = [
   },
   {
     title: 'Greyhound Facts',
-    description: 'FastAPI-powered REST API for serving interesting greyhound facts through simple and fast endpoints. Deployed on AWS with infrastructure as code using CDK.',
+    description: 'FastAPI-powered REST API for serving interesting greyhound facts through simple and fast endpointIs. Deployed on AWS with infrastructure as code using CDK.',
     image: 'v1781230093/greyhound_facts_tf2uuy.png',
     type: 'Personal Project',
     year: '2026',

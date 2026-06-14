@@ -87,9 +87,12 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, watch, onUnmounted } from "vue" // Added watch and onUnmounted
-    import { config } from '../config/env'
-    import { useHead } from '@unhead/vue'
+import { ref, watch, onUnmounted } from "vue" // Added watch and onUnmounted
+import { config } from '../config/env'
+import { useHead } from '@unhead/vue'
+
+// -- Static Config Variables --
+const { cloudinaryBaseUrl } = config
 
 // -- Type Definitions --
 interface Photo {
@@ -105,14 +108,13 @@ useHead({
     { name: 'description',        content: 'Retired racing greyhound based in the Washington DC Metro Area.' },
     { property: 'og:title',       content: 'Louie Longbottom - About Me' },
     { property: 'og:description', content: 'Retired racing greyhound based in the Washington DC Metro Area.' },
-    { property: 'og:url',         content: 'https://thomasliu.click' },
+    { property: 'og:url',         content: 'https://thomasliu.click/puppy' },
+    { property: 'og:image',       content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
     { property: 'og:type',        content: 'website' },
-    { name: 'twitter:card',       content: 'summary_large_image' }
+    { name: 'twitter:card',       content: 'summary_large_image' },
+    { name: 'twitter:image',      content: `${cloudinaryBaseUrl}/c_fill,w_1200,h_630,f_auto,q_auto/v1781467888/og_image_split_banner_i2o3ha.png` },
   ],
 })
-
-// -- Static Config Variables --
-const { cloudinaryBaseUrl } = config
 
 // -- HERO --
 const heroImage =
