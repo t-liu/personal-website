@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "tsx scripts/generate-previews.ts",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "tsx scripts/generate-previews.ts && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "serve": "vite preview",
     "test:unit": "vitest run",
