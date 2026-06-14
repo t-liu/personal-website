@@ -32,7 +32,7 @@
               >
                 <!-- Microlink handles background rendering and sizing automatically -->
                 <img
-                  :src="resolveCardImage(item.website)"
+                  :src="`/connections/${item.id}.png`"
                   :alt="`${item.name} website preview`"
                   width="600"
                   height="338"
@@ -94,9 +94,10 @@ interface SocialLink {
 }
 
 interface Connection {
+  id: string
   name: string
   bio: string
-  website: string // Used dynamically for both the link and the image fetch
+  website: string
   socials: SocialLink[]
 }
 
@@ -120,19 +121,9 @@ const setCardRef = (index: number) => (el: Element | ComponentPublicInstance | n
   cardRefs.value[index] = el instanceof HTMLElement ? el : null
 }
 
-// -- Image Resolution Pipeline --
-const resolveCardImage = (targetUrl: string): string => {
-  const encodedUrl = encodeURIComponent(targetUrl)
-  
-  // OPTION A: Live Viewport Screenshot (Perfect fallback if they don't have good SEO cards)
-  return `https://api.microlink.io/?url=${encodedUrl}&screenshot=true&embed=screenshot.url`
-  
-  // OPTION B: Scrape their official social share card (og:image) instead:
-  // return `https://api.microlink.io/?url=${encodedUrl}&embed=image.url`
-}
-
 const connections: Connection[] = [
   {
+    id: 'smiti-nathan',
     name: 'Dr. Smiti Nathan',
     bio: 'Smiti is one of my oldest friends. She is also one of the smartest, if not the smartest. Having spent a majority of her life in research and archaeology, Dr. Nathan now dedicates her time to story telling and curating content about the past. She also has a kick ass podcast!',
     website: 'https://smitinathan.com',
@@ -142,6 +133,7 @@ const connections: Connection[] = [
     ]
   },
   {
+    id: 'rebecca-deprey',
     name: 'Rebecca Deprey',
     bio: 'Becca is a friend of mine from back in school. She also went to University of Maryland, College Park!  She has gone on to become a very, very good full stack software engineer. Nowadays, Becca is building agentic systems and LLM-integrated products at scale.',
     website: 'https://rebeccamdeprey.com',
@@ -151,8 +143,9 @@ const connections: Connection[] = [
     ]
   },
   {
+    id: 'steven-taylor',
     name: 'Steven Taylor',
-    bio: 'Steven Taylor and I used to work for a consulting agency. He was a good system administrator.  He is a much better photographer.  How good?  Steven Taylor is an award-winning documentary and landscape photographer!  Go check out his studio in Philadelphia.',
+    bio: 'Steven Taylor and I used to work for a consulting agency. He was a good system administrator.  He is a much better photographer.  How much better?  Steven Taylor is an award-winning documentary and landscape photographer!  Go check out his studio in Philadelphia.',
     website: 'https://www.ubuntufa.com/',
     socials: [
       { platform: 'Instagram', label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/stevencwtaylor' }
