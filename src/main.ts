@@ -49,9 +49,7 @@ if (
   }
 
   window.gtag('js', new Date())
-  window.gtag('config', 'G-QZENC2QEMM', {
-    send_page_view: false
-  })
+  window.gtag('config', 'G-QZENC2QEMM')
 }
 
 // Font Awesome icons
@@ -100,6 +98,16 @@ const router = createRouter({
     }
 
     return { top: 0 }
+  }
+})
+
+// Fire a GA page_view on every SPA navigation
+router.afterEach((to) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'page_view', {
+      page_path: to.fullPath,
+      page_title: document.title
+    })
   }
 })
 
